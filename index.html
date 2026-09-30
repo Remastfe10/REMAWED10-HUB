@@ -1,37 +1,61 @@
-```html
 <!doctype html>
 <html lang="it">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>REMAWED10 HUB</title>
+
+<!-- Icona scheda browser (Favicon) -->
+<link rel="icon" href="1.jpg" type="image/jpeg">
+<link rel="shortcut icon" href="1.jpg" type="image/jpeg">
+<link rel="apple-touch-icon" href="1.jpg">
+
 <style>
 :root {
-  --bg:#070b14; --card:#101827; --text:#f3f6ff; --muted:#9aa7bd;
+  --bg:#070b14; --card:rgba(16, 24, 39, 0.88); --text:#f3f6ff; --muted:#9aa7bd;
   --primary:#4f8cff; --primary2:#76a7ff; --border:#26344d;
 }
 * { box-sizing:border-box; }
-body { margin:0; font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
-       background:radial-gradient(circle at 50% -10%,#17284a 0,#0b1220 32%,var(--bg) 72%);
-       color:var(--text); }
+body { 
+  margin:0; 
+  font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
+  background: url('2.jpg') no-repeat center center fixed;
+  background-size: cover;
+  color:var(--text); 
+}
 .container { width:min(1100px,92%); margin:auto; }
-header { padding:54px 0 30px; text-align:center; }
-.badge { display:inline-block; padding:7px 12px; border-radius:999px;
-          background:#172a50; color:#76a7ff; font-weight:700; font-size:13px; }
-h1 { margin:14px 0 10px; font-size:clamp(32px,5vw,58px); letter-spacing:-1.8px; }
+header { padding:40px 0 30px; text-align:center; }
+
+.top-logo {
+  width: 220px;
+  max-width: 85%;
+  height: auto;
+  margin: 0 auto 20px;
+  display: block;
+  border-radius: 18px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+  object-fit: contain;
+}
+
+.badge { display:inline-flex; align-items:center; gap:10px; padding:8px 16px; border-radius:999px;
+          background:rgba(23, 42, 80, 0.9); color:#76a7ff; font-weight:700; font-size:14px;
+          backdrop-filter: blur(6px); border: 1px solid var(--border); }
+.badge-img { height: 32px; width: auto; border-radius: 6px; object-fit: contain; }
+
+h1 { margin:16px 0 10px; font-size:clamp(32px,5vw,58px); letter-spacing:-1.8px; }
 .subtitle { margin:0 auto; max-width:700px; color:var(--muted); font-size:17px; }
 .toolbar { display:flex; gap:12px; margin:20px 0 22px; flex-wrap:wrap; }
 #search { flex:1; min-width:220px; padding:14px 16px; border:1px solid var(--border);
-           border-radius:14px; font-size:15px; outline:none; }
+           border-radius:14px; font-size:15px; outline:none; background: rgba(16, 24, 39, 0.85); color: var(--text); }
 #search:focus { border-color:#4f8cff; box-shadow:0 0 0 4px #172a50; }
 .grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:14px; padding-bottom:50px; }
 .slot { display:flex; align-items:center; gap:12px; background:var(--card);
          border:1px solid var(--border); border-radius:18px; padding:14px;
-         box-shadow:0 6px 20px rgba(31,41,55,.05); }
+         box-shadow:0 6px 20px rgba(0,0,0,.4); backdrop-filter: blur(8px); }
 .slot-number { width:38px; height:38px; border-radius:12px; display:grid; place-items:center;
                 background:#182946; color:#76a7ff; font-weight:800; flex:none; }
 .slot-content { min-width:0; flex:1; display:grid; gap:6px; }
-.slot-content input { width:100%; border:0; outline:0; background:transparent; }
+.slot-content input { width:100%; border:0; outline:0; background:transparent; color: var(--text); }
 .slot-title { font-weight:750; font-size:15px; color:var(--text); }
 .slot-url { color:var(--muted); font-size:13px; }
 .go { border:0; background:var(--primary); color:#fff; font-weight:800; padding:11px 14px;
@@ -39,14 +63,14 @@ h1 { margin:14px 0 10px; font-size:clamp(32px,5vw,58px); letter-spacing:-1.8px; 
 .go:hover { background:var(--primary2); }
 footer { text-align:center; color:var(--muted); padding:0 0 40px; font-size:13px; }
 @media (max-width:720px) { .grid { grid-template-columns:1fr; } }
-
 </style>
 </head>
 <body>
 <header class="container">
-  <span class="badge">50 SLOT • LINK</span>
+  <img src="1.jpg" alt="Logo Principale" class="top-logo">
+  <span class="badge"><img src="1.jpg" alt="Logo" class="badge-img"> 50 SLOT • LINK</span>
   <h1 id="mainTitle">REMAWED10 HUB</h1>
-  <p class="subtitle">TUTTI I SITI DI QUESTO HUB. <b>VAI A VASITARLI! ↗</b> (premi VAI per aprire il sito.)</p>
+  <p class="subtitle">TUTTI I SITI DI QUESTO HUB. <b>VAI A VISITARLI! ↗️</b> (premi VAI per aprire il sito.)</p>
 </header>
 
 <main class="container">
@@ -62,19 +86,17 @@ footer { text-align:center; color:var(--muted); padding:0 0 40px; font-size:13px
             <input class="slot-title" type="text" placeholder="Titolo del sito 1" aria-label="Titolo sito 1" value="Scherzi Telefonici - Generatore" readonly>
             <input class="slot-url" type="url" placeholder="https://esempio.it" aria-label="Link sito 1" value="https://remastfe10.github.io/scherzi-telefonici-generatore/" readonly>
           </div>
-          <button class="go" type="button">VAI ↗</button>
+          <button class="go" type="button">VAI ↗️</button>
         </article>
 
         <article class="slot">
-          <div class="slot-number">1</div>
+          <div class="slot-number">2</div>
           <div class="slot-content">
-            <input class="slot-title" type="text" placeholder="Titolo del sito 1" aria-label="Titolo sito 1" value="SCARICA PROGRAMMI WINDOWS DI QUESTO HUB" readonly>
-            <input class="slot-url" type="url" placeholder="https://esempio.it" aria-label="Link sito 1" value="https://remastfe10.github.io/REMAWED10-DOWNLOAD-WINDOWS/" readonly>
+            <input class="slot-title" type="text" placeholder="Titolo del sito 2" aria-label="Titolo sito 2" value="SCARICA PROGRAMMI WINDOWS DI QUESTO HUB" readonly>
+            <input class="slot-url" type="url" placeholder="https://esempio.it" aria-label="Link sito 2" value="https://remastfe10.github.io/REMAWED10-DOWNLOAD-WINDOWS/" readonly>
           </div>
-          <button class="go" type="button">VAI ↗</button>
+          <button class="go" type="button">VAI ↗️</button>
         </article>
-         
-        
 
         <article class="slot">
           <div class="slot-number">3</div>
@@ -82,7 +104,7 @@ footer { text-align:center; color:var(--muted); padding:0 0 40px; font-size:13px
             <input class="slot-title" type="text" placeholder="Titolo del sito 3" aria-label="Titolo sito 3" readonly>
             <input class="slot-url" type="url" placeholder="https://esempio.it" aria-label="Link sito 3" readonly>
           </div>
-          <button class="go" type="button">VAI ↗</button>
+          <button class="go" type="button">VAI ↗️</button>
         </article>
 
         <article class="slot">
@@ -91,7 +113,7 @@ footer { text-align:center; color:var(--muted); padding:0 0 40px; font-size:13px
             <input class="slot-title" type="text" placeholder="Titolo del sito 4" aria-label="Titolo sito 4" readonly>
             <input class="slot-url" type="url" placeholder="https://esempio.it" aria-label="Link sito 4" readonly>
           </div>
-          <button class="go" type="button">VAI ↗</button>
+          <button class="go" type="button">VAI ↗️</button>
         </article>
 
         <article class="slot">
@@ -100,7 +122,7 @@ footer { text-align:center; color:var(--muted); padding:0 0 40px; font-size:13px
             <input class="slot-title" type="text" placeholder="Titolo del sito 5" aria-label="Titolo sito 5" readonly>
             <input class="slot-url" type="url" placeholder="https://esempio.it" aria-label="Link sito 5" readonly>
           </div>
-          <button class="go" type="button">VAI ↗</button>
+          <button class="go" type="button">VAI ↗️</button>
         </article>
 
         <article class="slot">
@@ -109,7 +131,7 @@ footer { text-align:center; color:var(--muted); padding:0 0 40px; font-size:13px
             <input class="slot-title" type="text" placeholder="Titolo del sito 6" aria-label="Titolo sito 6" readonly>
             <input class="slot-url" type="url" placeholder="https://esempio.it" aria-label="Link sito 6" readonly>
           </div>
-          <button class="go" type="button">VAI ↗</button>
+          <button class="go" type="button">VAI ↗️</button>
         </article>
 
         <article class="slot">
@@ -118,7 +140,7 @@ footer { text-align:center; color:var(--muted); padding:0 0 40px; font-size:13px
             <input class="slot-title" type="text" placeholder="Titolo del sito 7" aria-label="Titolo sito 7" readonly>
             <input class="slot-url" type="url" placeholder="https://esempio.it" aria-label="Link sito 7" readonly>
           </div>
-          <button class="go" type="button">VAI ↗</button>
+          <button class="go" type="button">VAI ↗️</button>
         </article>
 
         <article class="slot">
@@ -127,7 +149,7 @@ footer { text-align:center; color:var(--muted); padding:0 0 40px; font-size:13px
             <input class="slot-title" type="text" placeholder="Titolo del sito 8" aria-label="Titolo sito 8" readonly>
             <input class="slot-url" type="url" placeholder="https://esempio.it" aria-label="Link sito 8" readonly>
           </div>
-          <button class="go" type="button">VAI ↗</button>
+          <button class="go" type="button">VAI ↗️</button>
         </article>
 
         <article class="slot">
@@ -136,7 +158,7 @@ footer { text-align:center; color:var(--muted); padding:0 0 40px; font-size:13px
             <input class="slot-title" type="text" placeholder="Titolo del sito 9" aria-label="Titolo sito 9" readonly>
             <input class="slot-url" type="url" placeholder="https://esempio.it" aria-label="Link sito 9" readonly>
           </div>
-          <button class="go" type="button">VAI ↗</button>
+          <button class="go" type="button">VAI ↗️</button>
         </article>
 
         <article class="slot">
@@ -145,7 +167,7 @@ footer { text-align:center; color:var(--muted); padding:0 0 40px; font-size:13px
             <input class="slot-title" type="text" placeholder="Titolo del sito 10" aria-label="Titolo sito 10" readonly>
             <input class="slot-url" type="url" placeholder="https://esempio.it" aria-label="Link sito 10" readonly>
           </div>
-          <button class="go" type="button">VAI ↗</button>
+          <button class="go" type="button">VAI ↗️</button>
         </article>
 
         <article class="slot">
@@ -154,7 +176,7 @@ footer { text-align:center; color:var(--muted); padding:0 0 40px; font-size:13px
             <input class="slot-title" type="text" placeholder="Titolo del sito 11" aria-label="Titolo sito 11" readonly>
             <input class="slot-url" type="url" placeholder="https://esempio.it" aria-label="Link sito 11" readonly>
           </div>
-          <button class="go" type="button">VAI ↗</button>
+          <button class="go" type="button">VAI ↗️</button>
         </article>
 
         <article class="slot">
@@ -163,7 +185,7 @@ footer { text-align:center; color:var(--muted); padding:0 0 40px; font-size:13px
             <input class="slot-title" type="text" placeholder="Titolo del sito 12" aria-label="Titolo sito 12" readonly>
             <input class="slot-url" type="url" placeholder="https://esempio.it" aria-label="Link sito 12" readonly>
           </div>
-          <button class="go" type="button">VAI ↗</button>
+          <button class="go" type="button">VAI ↗️</button>
         </article>
 
         <article class="slot">
@@ -172,7 +194,7 @@ footer { text-align:center; color:var(--muted); padding:0 0 40px; font-size:13px
             <input class="slot-title" type="text" placeholder="Titolo del sito 13" aria-label="Titolo sito 13" readonly>
             <input class="slot-url" type="url" placeholder="https://esempio.it" aria-label="Link sito 13" readonly>
           </div>
-          <button class="go" type="button">VAI ↗</button>
+          <button class="go" type="button">VAI ↗️</button>
         </article>
 
         <article class="slot">
@@ -181,7 +203,7 @@ footer { text-align:center; color:var(--muted); padding:0 0 40px; font-size:13px
             <input class="slot-title" type="text" placeholder="Titolo del sito 14" aria-label="Titolo sito 14" readonly>
             <input class="slot-url" type="url" placeholder="https://esempio.it" aria-label="Link sito 14" readonly>
           </div>
-          <button class="go" type="button">VAI ↗</button>
+          <button class="go" type="button">VAI ↗️</button>
         </article>
 
         <article class="slot">
@@ -190,7 +212,7 @@ footer { text-align:center; color:var(--muted); padding:0 0 40px; font-size:13px
             <input class="slot-title" type="text" placeholder="Titolo del sito 15" aria-label="Titolo sito 15" readonly>
             <input class="slot-url" type="url" placeholder="https://esempio.it" aria-label="Link sito 15" readonly>
           </div>
-          <button class="go" type="button">VAI ↗</button>
+          <button class="go" type="button">VAI ↗️</button>
         </article>
 
         <article class="slot">
@@ -199,7 +221,7 @@ footer { text-align:center; color:var(--muted); padding:0 0 40px; font-size:13px
             <input class="slot-title" type="text" placeholder="Titolo del sito 16" aria-label="Titolo sito 16" readonly>
             <input class="slot-url" type="url" placeholder="https://esempio.it" aria-label="Link sito 16" readonly>
           </div>
-          <button class="go" type="button">VAI ↗</button>
+          <button class="go" type="button">VAI ↗️</button>
         </article>
 
         <article class="slot">
@@ -208,7 +230,7 @@ footer { text-align:center; color:var(--muted); padding:0 0 40px; font-size:13px
             <input class="slot-title" type="text" placeholder="Titolo del sito 17" aria-label="Titolo sito 17" readonly>
             <input class="slot-url" type="url" placeholder="https://esempio.it" aria-label="Link sito 17" readonly>
           </div>
-          <button class="go" type="button">VAI ↗</button>
+          <button class="go" type="button">VAI ↗️</button>
         </article>
 
         <article class="slot">
@@ -217,7 +239,7 @@ footer { text-align:center; color:var(--muted); padding:0 0 40px; font-size:13px
             <input class="slot-title" type="text" placeholder="Titolo del sito 18" aria-label="Titolo sito 18" readonly>
             <input class="slot-url" type="url" placeholder="https://esempio.it" aria-label="Link sito 18" readonly>
           </div>
-          <button class="go" type="button">VAI ↗</button>
+          <button class="go" type="button">VAI ↗️</button>
         </article>
 
         <article class="slot">
@@ -226,7 +248,7 @@ footer { text-align:center; color:var(--muted); padding:0 0 40px; font-size:13px
             <input class="slot-title" type="text" placeholder="Titolo del sito 19" aria-label="Titolo sito 19" readonly>
             <input class="slot-url" type="url" placeholder="https://esempio.it" aria-label="Link sito 19" readonly>
           </div>
-          <button class="go" type="button">VAI ↗</button>
+          <button class="go" type="button">VAI ↗️</button>
         </article>
 
         <article class="slot">
@@ -235,7 +257,7 @@ footer { text-align:center; color:var(--muted); padding:0 0 40px; font-size:13px
             <input class="slot-title" type="text" placeholder="Titolo del sito 20" aria-label="Titolo sito 20" readonly>
             <input class="slot-url" type="url" placeholder="https://esempio.it" aria-label="Link sito 20" readonly>
           </div>
-          <button class="go" type="button">VAI ↗</button>
+          <button class="go" type="button">VAI ↗️</button>
         </article>
 
         <article class="slot">
@@ -244,7 +266,7 @@ footer { text-align:center; color:var(--muted); padding:0 0 40px; font-size:13px
             <input class="slot-title" type="text" placeholder="Titolo del sito 21" aria-label="Titolo sito 21" readonly>
             <input class="slot-url" type="url" placeholder="https://esempio.it" aria-label="Link sito 21" readonly>
           </div>
-          <button class="go" type="button">VAI ↗</button>
+          <button class="go" type="button">VAI ↗️</button>
         </article>
 
         <article class="slot">
@@ -253,7 +275,7 @@ footer { text-align:center; color:var(--muted); padding:0 0 40px; font-size:13px
             <input class="slot-title" type="text" placeholder="Titolo del sito 22" aria-label="Titolo sito 22" readonly>
             <input class="slot-url" type="url" placeholder="https://esempio.it" aria-label="Link sito 22" readonly>
           </div>
-          <button class="go" type="button">VAI ↗</button>
+          <button class="go" type="button">VAI ↗️</button>
         </article>
 
         <article class="slot">
@@ -262,7 +284,7 @@ footer { text-align:center; color:var(--muted); padding:0 0 40px; font-size:13px
             <input class="slot-title" type="text" placeholder="Titolo del sito 23" aria-label="Titolo sito 23" readonly>
             <input class="slot-url" type="url" placeholder="https://esempio.it" aria-label="Link sito 23" readonly>
           </div>
-          <button class="go" type="button">VAI ↗</button>
+          <button class="go" type="button">VAI ↗️</button>
         </article>
 
         <article class="slot">
@@ -271,7 +293,7 @@ footer { text-align:center; color:var(--muted); padding:0 0 40px; font-size:13px
             <input class="slot-title" type="text" placeholder="Titolo del sito 24" aria-label="Titolo sito 24" readonly>
             <input class="slot-url" type="url" placeholder="https://esempio.it" aria-label="Link sito 24" readonly>
           </div>
-          <button class="go" type="button">VAI ↗</button>
+          <button class="go" type="button">VAI ↗️</button>
         </article>
 
         <article class="slot">
@@ -280,7 +302,7 @@ footer { text-align:center; color:var(--muted); padding:0 0 40px; font-size:13px
             <input class="slot-title" type="text" placeholder="Titolo del sito 25" aria-label="Titolo sito 25" readonly>
             <input class="slot-url" type="url" placeholder="https://esempio.it" aria-label="Link sito 25" readonly>
           </div>
-          <button class="go" type="button">VAI ↗</button>
+          <button class="go" type="button">VAI ↗️</button>
         </article>
 
         <article class="slot">
@@ -289,7 +311,7 @@ footer { text-align:center; color:var(--muted); padding:0 0 40px; font-size:13px
             <input class="slot-title" type="text" placeholder="Titolo del sito 26" aria-label="Titolo sito 26" readonly>
             <input class="slot-url" type="url" placeholder="https://esempio.it" aria-label="Link sito 26" readonly>
           </div>
-          <button class="go" type="button">VAI ↗</button>
+          <button class="go" type="button">VAI ↗️</button>
         </article>
 
         <article class="slot">
@@ -298,7 +320,7 @@ footer { text-align:center; color:var(--muted); padding:0 0 40px; font-size:13px
             <input class="slot-title" type="text" placeholder="Titolo del sito 27" aria-label="Titolo sito 27" readonly>
             <input class="slot-url" type="url" placeholder="https://esempio.it" aria-label="Link sito 27" readonly>
           </div>
-          <button class="go" type="button">VAI ↗</button>
+          <button class="go" type="button">VAI ↗️</button>
         </article>
 
         <article class="slot">
@@ -307,7 +329,7 @@ footer { text-align:center; color:var(--muted); padding:0 0 40px; font-size:13px
             <input class="slot-title" type="text" placeholder="Titolo del sito 28" aria-label="Titolo sito 28" readonly>
             <input class="slot-url" type="url" placeholder="https://esempio.it" aria-label="Link sito 28" readonly>
           </div>
-          <button class="go" type="button">VAI ↗</button>
+          <button class="go" type="button">VAI ↗️</button>
         </article>
 
         <article class="slot">
@@ -316,7 +338,7 @@ footer { text-align:center; color:var(--muted); padding:0 0 40px; font-size:13px
             <input class="slot-title" type="text" placeholder="Titolo del sito 29" aria-label="Titolo sito 29" readonly>
             <input class="slot-url" type="url" placeholder="https://esempio.it" aria-label="Link sito 29" readonly>
           </div>
-          <button class="go" type="button">VAI ↗</button>
+          <button class="go" type="button">VAI ↗️</button>
         </article>
 
         <article class="slot">
@@ -325,7 +347,7 @@ footer { text-align:center; color:var(--muted); padding:0 0 40px; font-size:13px
             <input class="slot-title" type="text" placeholder="Titolo del sito 30" aria-label="Titolo sito 30" readonly>
             <input class="slot-url" type="url" placeholder="https://esempio.it" aria-label="Link sito 30" readonly>
           </div>
-          <button class="go" type="button">VAI ↗</button>
+          <button class="go" type="button">VAI ↗️</button>
         </article>
 
         <article class="slot">
@@ -334,7 +356,7 @@ footer { text-align:center; color:var(--muted); padding:0 0 40px; font-size:13px
             <input class="slot-title" type="text" placeholder="Titolo del sito 31" aria-label="Titolo sito 31" readonly>
             <input class="slot-url" type="url" placeholder="https://esempio.it" aria-label="Link sito 31" readonly>
           </div>
-          <button class="go" type="button">VAI ↗</button>
+          <button class="go" type="button">VAI ↗️</button>
         </article>
 
         <article class="slot">
@@ -343,7 +365,7 @@ footer { text-align:center; color:var(--muted); padding:0 0 40px; font-size:13px
             <input class="slot-title" type="text" placeholder="Titolo del sito 32" aria-label="Titolo sito 32" readonly>
             <input class="slot-url" type="url" placeholder="https://esempio.it" aria-label="Link sito 32" readonly>
           </div>
-          <button class="go" type="button">VAI ↗</button>
+          <button class="go" type="button">VAI ↗️</button>
         </article>
 
         <article class="slot">
@@ -352,7 +374,7 @@ footer { text-align:center; color:var(--muted); padding:0 0 40px; font-size:13px
             <input class="slot-title" type="text" placeholder="Titolo del sito 33" aria-label="Titolo sito 33" readonly>
             <input class="slot-url" type="url" placeholder="https://esempio.it" aria-label="Link sito 33" readonly>
           </div>
-          <button class="go" type="button">VAI ↗</button>
+          <button class="go" type="button">VAI ↗️</button>
         </article>
 
         <article class="slot">
@@ -361,7 +383,7 @@ footer { text-align:center; color:var(--muted); padding:0 0 40px; font-size:13px
             <input class="slot-title" type="text" placeholder="Titolo del sito 34" aria-label="Titolo sito 34" readonly>
             <input class="slot-url" type="url" placeholder="https://esempio.it" aria-label="Link sito 34" readonly>
           </div>
-          <button class="go" type="button">VAI ↗</button>
+          <button class="go" type="button">VAI ↗️️</button>
         </article>
 
         <article class="slot">
@@ -370,7 +392,7 @@ footer { text-align:center; color:var(--muted); padding:0 0 40px; font-size:13px
             <input class="slot-title" type="text" placeholder="Titolo del sito 35" aria-label="Titolo sito 35" readonly>
             <input class="slot-url" type="url" placeholder="https://esempio.it" aria-label="Link sito 35" readonly>
           </div>
-          <button class="go" type="button">VAI ↗</button>
+          <button class="go" type="button">VAI ↗️</button>
         </article>
 
         <article class="slot">
@@ -379,7 +401,7 @@ footer { text-align:center; color:var(--muted); padding:0 0 40px; font-size:13px
             <input class="slot-title" type="text" placeholder="Titolo del sito 36" aria-label="Titolo sito 36" readonly>
             <input class="slot-url" type="url" placeholder="https://esempio.it" aria-label="Link sito 36" readonly>
           </div>
-          <button class="go" type="button">VAI ↗</button>
+          <button class="go" type="button">VAI ↗️</button>
         </article>
 
         <article class="slot">
@@ -388,7 +410,7 @@ footer { text-align:center; color:var(--muted); padding:0 0 40px; font-size:13px
             <input class="slot-title" type="text" placeholder="Titolo del sito 37" aria-label="Titolo sito 37" readonly>
             <input class="slot-url" type="url" placeholder="https://esempio.it" aria-label="Link sito 37" readonly>
           </div>
-          <button class="go" type="button">VAI ↗</button>
+          <button class="go" type="button">VAI ↗️</button>
         </article>
 
         <article class="slot">
@@ -397,7 +419,7 @@ footer { text-align:center; color:var(--muted); padding:0 0 40px; font-size:13px
             <input class="slot-title" type="text" placeholder="Titolo del sito 38" aria-label="Titolo sito 38" readonly>
             <input class="slot-url" type="url" placeholder="https://esempio.it" aria-label="Link sito 38" readonly>
           </div>
-          <button class="go" type="button">VAI ↗</button>
+          <button class="go" type="button">VAI ↗️</button>
         </article>
 
         <article class="slot">
@@ -406,7 +428,7 @@ footer { text-align:center; color:var(--muted); padding:0 0 40px; font-size:13px
             <input class="slot-title" type="text" placeholder="Titolo del sito 39" aria-label="Titolo sito 39" readonly>
             <input class="slot-url" type="url" placeholder="https://esempio.it" aria-label="Link sito 39" readonly>
           </div>
-          <button class="go" type="button">VAI ↗</button>
+          <button class="go" type="button">VAI ↗️</button>
         </article>
 
         <article class="slot">
@@ -415,7 +437,7 @@ footer { text-align:center; color:var(--muted); padding:0 0 40px; font-size:13px
             <input class="slot-title" type="text" placeholder="Titolo del sito 40" aria-label="Titolo sito 40" readonly>
             <input class="slot-url" type="url" placeholder="https://esempio.it" aria-label="Link sito 40" readonly>
           </div>
-          <button class="go" type="button">VAI ↗</button>
+          <button class="go" type="button">VAI ↗️</button>
         </article>
 
         <article class="slot">
@@ -424,7 +446,7 @@ footer { text-align:center; color:var(--muted); padding:0 0 40px; font-size:13px
             <input class="slot-title" type="text" placeholder="Titolo del sito 41" aria-label="Titolo sito 41" readonly>
             <input class="slot-url" type="url" placeholder="https://esempio.it" aria-label="Link sito 41" readonly>
           </div>
-          <button class="go" type="button">VAI ↗</button>
+          <button class="go" type="button">VAI ↗️</button>
         </article>
 
         <article class="slot">
@@ -433,7 +455,7 @@ footer { text-align:center; color:var(--muted); padding:0 0 40px; font-size:13px
             <input class="slot-title" type="text" placeholder="Titolo del sito 42" aria-label="Titolo sito 42" readonly>
             <input class="slot-url" type="url" placeholder="https://esempio.it" aria-label="Link sito 42" readonly>
           </div>
-          <button class="go" type="button">VAI ↗</button>
+          <button class="go" type="button">VAI ↗️</button>
         </article>
 
         <article class="slot">
@@ -442,7 +464,7 @@ footer { text-align:center; color:var(--muted); padding:0 0 40px; font-size:13px
             <input class="slot-title" type="text" placeholder="Titolo del sito 43" aria-label="Titolo sito 43" readonly>
             <input class="slot-url" type="url" placeholder="https://esempio.it" aria-label="Link sito 43" readonly>
           </div>
-          <button class="go" type="button">VAI ↗</button>
+          <button class="go" type="button">VAI ↗️</button>
         </article>
 
         <article class="slot">
@@ -451,7 +473,7 @@ footer { text-align:center; color:var(--muted); padding:0 0 40px; font-size:13px
             <input class="slot-title" type="text" placeholder="Titolo del sito 44" aria-label="Titolo sito 44" readonly>
             <input class="slot-url" type="url" placeholder="https://esempio.it" aria-label="Link sito 44" readonly>
           </div>
-          <button class="go" type="button">VAI ↗</button>
+          <button class="go" type="button">VAI ↗️</button>
         </article>
 
         <article class="slot">
@@ -460,7 +482,7 @@ footer { text-align:center; color:var(--muted); padding:0 0 40px; font-size:13px
             <input class="slot-title" type="text" placeholder="Titolo del sito 45" aria-label="Titolo sito 45" readonly>
             <input class="slot-url" type="url" placeholder="https://esempio.it" aria-label="Link sito 45" readonly>
           </div>
-          <button class="go" type="button">VAI ↗</button>
+          <button class="go" type="button">VAI ↗️</button>
         </article>
 
         <article class="slot">
@@ -469,7 +491,7 @@ footer { text-align:center; color:var(--muted); padding:0 0 40px; font-size:13px
             <input class="slot-title" type="text" placeholder="Titolo del sito 46" aria-label="Titolo sito 46" readonly>
             <input class="slot-url" type="url" placeholder="https://esempio.it" aria-label="Link sito 46" readonly>
           </div>
-          <button class="go" type="button">VAI ↗</button>
+          <button class="go" type="button">VAI ↗️</button>
         </article>
 
         <article class="slot">
@@ -478,7 +500,7 @@ footer { text-align:center; color:var(--muted); padding:0 0 40px; font-size:13px
             <input class="slot-title" type="text" placeholder="Titolo del sito 47" aria-label="Titolo sito 47" readonly>
             <input class="slot-url" type="url" placeholder="https://esempio.it" aria-label="Link sito 47" readonly>
           </div>
-          <button class="go" type="button">VAI ↗</button>
+          <button class="go" type="button">VAI ↗️</button>
         </article>
 
         <article class="slot">
@@ -487,7 +509,7 @@ footer { text-align:center; color:var(--muted); padding:0 0 40px; font-size:13px
             <input class="slot-title" type="text" placeholder="Titolo del sito 48" aria-label="Titolo sito 48" readonly>
             <input class="slot-url" type="url" placeholder="https://esempio.it" aria-label="Link sito 48" readonly>
           </div>
-          <button class="go" type="button">VAI ↗</button>
+          <button class="go" type="button">VAI ↗️</button>
         </article>
 
         <article class="slot">
@@ -496,7 +518,7 @@ footer { text-align:center; color:var(--muted); padding:0 0 40px; font-size:13px
             <input class="slot-title" type="text" placeholder="Titolo del sito 49" aria-label="Titolo sito 49" readonly>
             <input class="slot-url" type="url" placeholder="https://esempio.it" aria-label="Link sito 49" readonly>
           </div>
-          <button class="go" type="button">VAI ↗</button>
+          <button class="go" type="button">VAI ↗️</button>
         </article>
 
         <article class="slot">
@@ -505,7 +527,7 @@ footer { text-align:center; color:var(--muted); padding:0 0 40px; font-size:13px
             <input class="slot-title" type="text" placeholder="Titolo del sito 50" aria-label="Titolo sito 50" readonly>
             <input class="slot-url" type="url" placeholder="https://esempio.it" aria-label="Link sito 50" readonly>
           </div>
-          <button class="go" type="button">VAI ↗</button>
+          <button class="go" type="button">VAI ↗️</button>
         </article>
 
   </section>
@@ -554,4 +576,3 @@ document.querySelectorAll('.slot').forEach((card, i) => {
 
 </body>
 </html>
-```
