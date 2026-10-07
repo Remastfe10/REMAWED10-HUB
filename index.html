@@ -62,10 +62,181 @@ h1 { margin:16px 0 10px; font-size:clamp(32px,5vw,58px); letter-spacing:-1.8px; 
        border-radius:12px; cursor:pointer; }
 .go:hover { background:var(--primary2); }
 footer { text-align:center; color:var(--muted); padding:0 0 40px; font-size:13px; }
+
+/* ===== NOTIFICA NUOVO GIOCO ===== */
+.game-notification {
+  position: fixed;
+  top: 24px;
+  right: 24px;
+  z-index: 9999;
+  width: min(420px, calc(100vw - 32px));
+  padding: 18px 18px 16px;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 10px 14px;
+  align-items: center;
+  background: linear-gradient(145deg, rgba(20, 31, 53, 0.97), rgba(9, 15, 28, 0.97));
+  border: 1px solid rgba(118, 167, 255, 0.55);
+  border-radius: 20px;
+  box-shadow:
+    0 18px 55px rgba(0, 0, 0, 0.55),
+    0 0 30px rgba(79, 140, 255, 0.16);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  transform: translateX(calc(100% + 40px));
+  opacity: 0;
+  pointer-events: none;
+  transition:
+    transform 0.65s cubic-bezier(.22, 1, .36, 1),
+    opacity 0.45s ease;
+}
+
+.game-notification.show {
+  transform: translateX(0);
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.game-notification.hide {
+  transform: translateX(calc(100% + 40px));
+  opacity: 0;
+  pointer-events: none;
+}
+
+.game-notification::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 18px;
+  bottom: 18px;
+  width: 4px;
+  border-radius: 0 5px 5px 0;
+  background: linear-gradient(180deg, #76a7ff, #4f8cff);
+  box-shadow: 0 0 15px rgba(79, 140, 255, 0.75);
+}
+
+.game-notification-content {
+  min-width: 0;
+}
+
+.game-notification-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  margin-bottom: 7px;
+  color: #76a7ff;
+  font-size: 11px;
+  font-weight: 900;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+}
+
+.game-notification-label::before {
+  content: "";
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #76a7ff;
+  box-shadow: 0 0 10px #76a7ff;
+  animation: notificationPulse 1.5s infinite;
+}
+
+.game-notification h2 {
+  margin: 0 0 7px;
+  color: #fff;
+  font-size: 17px;
+  line-height: 1.25;
+  letter-spacing: -0.3px;
+}
+
+.game-notification p {
+  margin: 0;
+  color: #b9c5d9;
+  font-size: 13px;
+  line-height: 1.45;
+}
+
+.game-notification-actions {
+  grid-column: 1 / -1;
+  display: flex;
+  gap: 9px;
+  margin-top: 2px;
+}
+
+.game-play-btn,
+.game-close-btn {
+  border: 0;
+  border-radius: 11px;
+  cursor: pointer;
+  font: inherit;
+  font-weight: 850;
+  transition: transform 0.2s ease, filter 0.2s ease, background 0.2s ease;
+}
+
+.game-play-btn {
+  flex: 1;
+  padding: 11px 15px;
+  color: #fff;
+  text-decoration: none;
+  text-align: center;
+  background: linear-gradient(135deg, #4f8cff, #6e9fff);
+  box-shadow: 0 7px 20px rgba(79, 140, 255, 0.28);
+}
+
+.game-play-btn:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.1);
+}
+
+.game-close-btn {
+  padding: 11px 15px;
+  color: #d5deee;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.game-close-btn:hover {
+  transform: translateY(-2px);
+  background: rgba(255, 255, 255, 0.13);
+}
+
+@keyframes notificationPulse {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.45); opacity: 0.55; }
+}
+
+@media (max-width: 720px) {
+  .game-notification {
+    top: 14px;
+    right: 16px;
+    width: calc(100vw - 32px);
+  }
+}
+
 @media (max-width:720px) { .grid { grid-template-columns:1fr; } }
 </style>
 </head>
 <body>
+
+  <!-- Notifica nuovo gioco Roblox -->
+  <aside class="game-notification" id="gameNotification" aria-live="polite">
+    <div class="game-notification-content">
+      <div class="game-notification-label">NUOVO GIOCO ROBLOX</div>
+      <h2>È USCITO UN NUOVO GIOCO ROBLOX DI QUESTO HUB!</h2>
+      <p>Vuoi provarlo? Entra subito e gioca ora!</p>
+    </div>
+
+    <div class="game-notification-actions">
+      <a
+        class="game-play-btn"
+        href="https://www.roblox.com/it/games/117398098874863/SVEGLIARE-IL-VICINO"
+        target="_blank"
+        rel="noopener noreferrer"
+      >🎮 GIOCA ORA</a>
+      <button class="game-close-btn" id="closeGameNotification" type="button">✕</button>
+    </div>
+  </aside>
+
 <header class="container">
   <img src="1.jpg" alt="Logo Principale" class="top-logo">
   <span class="badge"><img src="1.jpg" alt="Logo" class="badge-img"> 50 SLOT • LINK</span>
@@ -572,6 +743,30 @@ document.querySelectorAll('.slot').forEach((card, i) => {
   t.addEventListener('input', () => localStorage.setItem('slotTitle' + i, t.value));
   u.addEventListener('input', () => localStorage.setItem('slotUrl' + i, u.value));
 });
+
+// ===== NOTIFICA NUOVO GIOCO =====
+const gameNotification = document.getElementById('gameNotification');
+const closeGameNotification = document.getElementById('closeGameNotification');
+
+function showGameNotification() {
+  gameNotification.classList.remove('hide');
+  requestAnimationFrame(() => {
+    requestAnimationFrame(() => gameNotification.classList.add('show'));
+  });
+}
+
+function hideGameNotification() {
+  gameNotification.classList.remove('show');
+  gameNotification.classList.add('hide');
+}
+
+// Mostra la notifica poco dopo il caricamento della pagina.
+window.addEventListener('load', () => {
+  setTimeout(showGameNotification, 700);
+});
+
+closeGameNotification.addEventListener('click', hideGameNotification);
+
 </script>
 
 </body>
