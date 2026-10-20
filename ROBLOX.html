@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>REMAWED10 HUB ROBLOX</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Orbitron:wght@700;900&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            background-color: #000000;
+            color: #ffffff;
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+        }
+
+        /* Canvas Sfondo Stelle Animate */
+        #stars-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        /* Testo Neon */
+        .neon-title {
+            text-shadow: 0 0 12px rgba(255, 0, 85, 0.8), 0 0 30px rgba(255, 0, 85, 0.5);
+        }
+
+        /* Card Semplice */
+        .simple-card {
+            background: rgba(15, 15, 20, 0.9);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.25s ease;
+        }
+        .simple-card:hover {
+            border-color: #ff0055;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px -5px rgba(255, 0, 85, 0.3);
+        }
+    </style>
+</head>
+<body class="relative min-h-screen flex flex-col justify-between">
+
+    <!-- SFONDO STELLE ANIMATE -->
+    <canvas id="stars-canvas"></canvas>
+
+    <div class="relative z-10 flex flex-col min-h-screen max-w-6xl mx-auto w-full px-4 py-6">
+
+        <!-- HEADER CON BOTTONE TORNA INDIETRO E TITOLO -->
+        <header class="mb-10 space-y-6 text-center">
+            
+            <div class="flex items-center justify-start">
+                <!-- FRECCIA TORNA INDIETRO -->
+                <a href="https://remastfe10.github.io/REMAWED10-HUB/" 
+                   class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-white/5 hover:bg-white/10 border border-white/10 text-slate-300 hover:text-white text-sm transition-all">
+                    <i class="fa-solid fa-arrow-left text-red-500"></i>
+                    <span>Torna indietro</span>
+                </a>
+            </div>
+
+            <!-- TITOLO PRINCIPALE -->
+            <h1 class="font-orbitron font-black text-3xl sm:text-5xl text-transparent bg-clip-text bg-gradient-to-r from-red-500 via-pink-500 to-purple-500 neon-title uppercase tracking-wider">
+                REMAWED10 HUB ROBLOX
+            </h1>
+        </header>
+
+        <!-- CONTENUTO PRINCIPALE -->
+        <main class="space-y-12">
+
+            <!-- SEZIONE GIOCHI (23 SLOT SEMPLICI) -->
+            <section class="space-y-6">
+                <div class="border-b border-white/10 pb-3 flex items-center justify-between">
+                    <h2 class="font-orbitron text-xl font-bold text-white flex items-center gap-2">
+                        <i class="fa-solid fa-gamepad text-red-500"></i>
+                        <span>SEZIONE GIOCHI</span>
+                    </h2>
+                    <span class="text-xs font-mono text-slate-400">23 Slot Disponibili</span>
+                </div>
+
+                <!-- GRIGLIA 23 SLOT -->
+                <div id="games-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                    <!-- Generato da Script JS sottostante -->
+                </div>
+            </section>
+
+            <!-- SEZIONE ESECUTORI -->
+            <section class="space-y-6 pt-6">
+                <div class="border-b border-white/10 pb-3">
+                    <h2 class="font-orbitron text-xl font-bold text-white flex items-center gap-2">
+                        <i class="fa-solid fa-download text-red-500"></i>
+                        <span>SEZIONE ESECUTORI</span>
+                    </h2>
+                </div>
+
+                <!-- CARD SINGOLO DOWNLOAD -->
+                <div class="max-w-xl mx-auto simple-card p-6 rounded-2xl text-center space-y-4 border-red-500/30">
+                    <div class="w-16 h-16 mx-auto rounded-full bg-red-500/10 border border-red-500/30 flex items-center justify-center text-red-500 text-2xl">
+                        <i class="fa-solid fa-folder-arrow-down"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-orbitron font-bold text-xl text-white">REMAWED10 HUB EXECUTOR</h3>
+                        <p class="text-slate-400 text-sm mt-1"> scarica l ultima versione: v.0.0! tutte le mod in un file buon divertimento!.</p>
+                    </div>
+                    
+                    <!-- LINK DOWNLOAD DIRETTO DEL FILE ZIP -->
+                    <a href="exploits.zip" download="exploits.zip" 
+                       class="inline-flex items-center justify-center gap-2 w-full py-3 px-6 bg-gradient-to-r from-red-600 to-purple-600 hover:brightness-110 text-white font-orbitron font-bold rounded-xl transition-all shadow-lg shadow-red-600/20 cursor-pointer">
+                        <i class="fa-solid fa-download"></i>
+                        <span>SCARICA CARTELLA DEGLI EXPLOITS DI ROBLOX  (ZIP)</span>
+                    </a>
+                </div>
+            </section>
+
+        </main>
+
+        <!-- FOOTER -->
+        <footer class="text-center py-8 text-xs text-slate-600 font-mono border-t border-white/5 mt-12">
+            &copy; REMAWED10 HUB ROBLOX. All rights reserved.
+        </footer>
+
+    </div>
+
+    <!-- JAVASCRIPT -->
+    <script>
+        /* 1. ANIMAZIONE STELLE CANVA SULLO SFONDO */
+        const canvas = document.getElementById('stars-canvas');
+        const ctx = canvas.getContext('2d');
+        let stars = [];
+
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+
+        class Star {
+            constructor() {
+                this.reset();
+            }
+            reset() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.size = Math.random() * 1.5 + 0.5;
+                this.alpha = Math.random();
+                this.speed = Math.random() * 0.02 + 0.005;
+                this.dir = Math.random() > 0.5 ? 1 : -1;
+            }
+            update() {
+                this.alpha += this.speed * this.dir;
+                if (this.alpha >= 1) { this.alpha = 1; this.dir = -1; }
+                else if (this.alpha <= 0.1) { this.reset(); }
+            }
+            draw() {
+                ctx.save();
+                ctx.globalAlpha = this.alpha;
+                ctx.fillStyle = '#ffffff';
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fill();
+                ctx.restore();
+            }
+        }
+
+        function initStars() {
+            resizeCanvas();
+            stars = [];
+            for (let i = 0; i < 150; i++) stars.push(new Star());
+        }
+
+        function animateStars() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            stars.forEach(star => { star.update(); star.draw(); });
+            requestAnimationFrame(animateStars);
+        }
+
+        window.addEventListener('resize', resizeCanvas);
+
+        /* 2. CONFIGURAZIONE 23 SLOT GIOCHI ROBLOX */
+        const GIOCHI_LISTA = [
+            { id: 1,  title: "404", desc: "404", url: "https://www.roblox.com/it/games/117398098874863/SVEGLIARE-IL-VICINO" },
+            { id: 2,  title: "404", desc: "404", url: "" },
+            { id: 3,  title: "404", desc: "404", url: "" },
+            { id: 4,  title: "404", desc: "404", url: "" },
+            { id: 5,  title: "404", desc: "404", url: "" },
+            { id: 6,  title: "404", desc: "404", url: "" },
+            { id: 7,  title: "404", desc: "404", url: "" },
+            { id: 8,  title: "404", desc: "404", url: "" },
+            { id: 9,  title: "404", desc: "404", url: "" },
+            { id: 10, title: "404", desc: "404", url: "" },
+            { id: 11, title: "404", desc: "404", url: "" },
+            { id: 12, title: "404", desc: "404", url: "" },
+            { id: 13, title: "404", desc: "404", url: "" },
+            { id: 14, title: "404", desc: "404", url: "" },
+            { id: 15, title: "404", desc: "404", url: "" },
+            { id: 16, title: "404", desc: "404", url: "" },
+            { id: 17, title: "404", desc: "404", url: "" },
+            { id: 18, title: "404", desc: "404", url: "" },
+            { id: 19, title: "404", desc: "404", url: "" },
+            { id: 20, title: "404", desc: "404", url: "" },
+            { id: 21, title: "404", desc: "404", url: "" },
+            { id: 22, title: "404", desc: "404", url: "" },
+            { id: 23, title: "404", desc: "404", url: "" }
+        ];
+
+        /* RENDER SLOTS */
+        function renderSlots() {
+            const container = document.getElementById('games-container');
+            container.innerHTML = "";
+
+            GIOCHI_LISTA.forEach(game => {
+                const card = `
+                    <div class="simple-card p-4 rounded-xl flex flex-col justify-between space-y-3">
+                        <div class="space-y-1">
+                            <span class="text-[10px] font-mono text-red-500 uppercase tracking-widest font-semibold">Slot #${game.id}</span>
+                            <h3 class="font-orbitron font-bold text-white text-base truncate">${game.title}</h3>
+                            <p class="text-slate-400 text-xs leading-relaxed line-clamp-2">${game.desc}</p>
+                        </div>
+                        <a href="${game.url}" target="_blank" rel="noopener noreferrer" 
+                           class="inline-flex items-center justify-center gap-2 w-full py-2 px-3 bg-white/5 hover:bg-red-600/80 border border-white/10 hover:border-red-500 text-white font-orbitron text-xs rounded-lg transition-all">
+                            <span>VAI AL GIOCO</span>
+                            <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+                        </a>
+                    </div>
+                `;
+                container.innerHTML += card;
+            });
+        }
+
+        window.onload = function() {
+            initStars();
+            animateStars();
+            renderSlots();
+        };
+    </script>
+</body>
+</html>
