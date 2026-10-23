@@ -185,7 +185,7 @@
 
         /* 2. CONFIGURAZIONE 23 SLOT GIOCHI ROBLOX */
         const GIOCHI_LISTA = [
-            { id: 1,  title: "svegliare il vicino (beta)", desc: "sveglia il vicino colpendo la finestra e scappa e sopravvivi alla sua mazza lanciata... fai le missioni andando da (mission man) e toccare senza fartti ingannare dalle part rotonde clic cando i rettangoli rimbow per avere bloxy cola e velocita gratis! , url: "https://www.roblox.com/it/games/117398098874863/SVEGLIARE-IL-VICINO" },
+            { id: 1,  title: "svegliare il vicino (beta)", desc: "sveglia il vicino colpendo la finestra e scappa e sopravvivi alla sua mazza lanciata... fai le missioni andando da (mission man) e toccare senza fartti ingannare dalle part rotonde clic cando i rettangoli rimbow per avere bloxy cola e velocita gratis!", url: "https://www.roblox.com/it/games/117398098874863/SVEGLIARE-IL-VICINO" },
             { id: 2,  title: "battaglia di bottiglie", desc: "prendi la tua bottiglia di plastica colpisci i player guadagna e aggiorna la tua esperienza con quei soldi!", url: "https://www.roblox.com/it/games/108184954200746/BATTAGLIE-DI-BOTTIGLIE" },
             { id: 3,  title: "404", desc: "404", url: "" },
             { id: 4,  title: "404", desc: "404", url: "" },
@@ -223,7 +223,7 @@
                             <h3 class="font-orbitron font-bold text-white text-base truncate">${game.title}</h3>
                             <p class="text-slate-400 text-xs leading-relaxed line-clamp-2">${game.desc}</p>
                         </div>
-                        <a href="${game.url}" target="_blank" rel="noopener noreferrer" 
+                        <a href="${game.url || '#'}" target="_blank" rel="noopener noreferrer" 
                            class="inline-flex items-center justify-center gap-2 w-full py-2 px-3 bg-white/5 hover:bg-red-600/80 border border-white/10 hover:border-red-500 text-white font-orbitron text-xs rounded-lg transition-all">
                             <span>VAI AL GIOCO</span>
                             <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
