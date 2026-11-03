@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pannello Interattivo</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            width: 100vw;
+            height: 100vh;
+            background-color: #0d0e12; /* Sfondo scuro identico alla GUI */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            overflow: hidden;
+            perspective: 1000px;
+        }
+
+        /* Pulsante Indietro */
+        .btn-back {
+            position: fixed;
+            top: 24px;
+            left: 24px;
+            padding: 12px 24px;
+            background-color: rgba(255, 255, 255, 0.05);
+            color: #ffffff;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 14px;
+            backdrop-filter: blur(10px);
+            transition: all 0.2s ease;
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-back:hover {
+            background-color: #00e676;
+            color: #000000;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0, 230, 118, 0.3);
+        }
+
+        /* Wrapper della Card: si adatta esattamente alle proporzioni dell'immagine */
+        .card-container {
+            position: relative;
+            display: inline-block;
+            max-width: 90vw;
+            max-height: 85vh;
+            border-radius: 20px;
+            transform-style: preserve-3d;
+            transition: transform 0.1s ease-out;
+            cursor: pointer;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
+        }
+
+        /* Card principale */
+        .card {
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            display: flex;
+            transform-style: preserve-3d;
+        }
+
+        /* Immagine adattata al 100% senza distorsioni o rettangoli vuoti */
+        .card-img {
+            display: block;
+            width: 100%;
+            max-width: 900px;
+            height: auto;
+            max-height: 85vh;
+            object-fit: contain;
+            border-radius: 20px;
+        }
+
+        /* Effetto luce dinamica che segue il cursore */
+        .glow-overlay {
+            position: absolute;
+            inset: 0;
+            border-radius: 20px;
+            background: radial-gradient(
+                500px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+                rgba(0, 230, 118, 0.18),
+                transparent 40%
+            );
+            pointer-events: none;
+            mix-blend-mode: screen;
+            z-index: 2;
+        }
+
+        /* Bordo luminoso che segue il cursore sui contorni esatti */
+        .card::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            border-radius: 20px;
+            padding: 1.5px;
+            background: radial-gradient(
+                350px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+                rgba(0, 230, 118, 0.7),
+                transparent 45%
+            );
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            pointer-events: none;
+            z-index: 3;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Pulsante Indietro -->
+    <a href="exploits.html" class="btn-back">
+        &#8592; Indietro
+    </a>
+
+    <!-- Container Card -->
+    <div class="card-container" id="cardContainer">
+        <div class="card">
+            <!-- Carica gui.png -->
+            <img 
+                id="cardImage" 
+                class="card-img" 
+                src="gui.png" 
+                alt="GUI Preview"
+                onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=1200&auto=format&fit=crop';"
+            />
+            <div class="glow-overlay"></div>
+        </div>
+    </div>
+
+    <script>
+        const cardContainer = document.getElementById('cardContainer');
+
+        let bounds;
+
+        function updateBounds() {
+            bounds = cardContainer.getBoundingClientRect();
+        }
+
+        function rotateElement(e) {
+            if (!bounds) updateBounds();
+
+            const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+            const clientY = e.touches ? e.touches[0].clientY : e.clientY;
+
+            const x = clientX - bounds.left;
+            const y = clientY - bounds.top;
+
+            const mouseX = x / bounds.width;
+            const mouseY = y / bounds.height;
+
+            const percentX = mouseX * 100;
+            const percentY = mouseY * 100;
+
+            cardContainer.style.setProperty('--mouse-x', `${percentX}%`);
+            cardContainer.style.setProperty('--mouse-y', `${percentY}%`);
+
+            const rotateX = (mouseY - 0.5) * -20;
+            const rotateY = (mouseX - 0.5) * 20;
+
+            cardContainer.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
+        }
+
+        // Eventi Mouse
+        cardContainer.addEventListener('mouseenter', () => {
+            updateBounds();
+            cardContainer.style.transition = 'none';
+        });
+
+        cardContainer.addEventListener('mousemove', rotateElement);
+
+        cardContainer.addEventListener('mouseleave', () => {
+            cardContainer.style.transition = 'transform 0.5s ease';
+            cardContainer.style.transform = 'rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)';
+        });
+
+        // Eventi Touch
+        cardContainer.addEventListener('touchstart', (e) => {
+            updateBounds();
+            cardContainer.style.transition = 'none';
+            rotateElement(e);
+        }, { passive: true });
+
+        cardContainer.addEventListener('touchmove', rotateElement, { passive: true });
+
+        cardContainer.addEventListener('touchend', () => {
+            cardContainer.style.transition = 'transform 0.5s ease';
+            cardContainer.style.transform = 'rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)';
+        });
+
+        window.addEventListener('resize', updateBounds);
+    </script>
+</body>
+</html>

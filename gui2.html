@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>REMAWED 10 PC EDITION v0.4</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- Google Fonts: Inter & JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            robloxBg: '#0a0b11',
+            robloxPanel: '#14161e',
+            robloxGreen: '#00ffaa',
+            robloxGreenDark: '#19302b',
+            robloxBlue: '#008cff',
+            robloxBorder: '#282d37',
+          },
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            mono: ['JetBrains Mono', 'monospace'],
+          },
+          boxShadow: {
+            neonGreen: '0 0 15px rgba(0, 255, 170, 0.4)',
+            neonGreenSm: '0 0 8px rgba(0, 255, 170, 0.3)',
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* Custom Scrollbar Styling to match Roblox UI */
+    ::-webkit-scrollbar {
+      width: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: transparent;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #00ffaa;
+      border-radius: 9999px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #00cc88;
+    }
+    /* Pulse glow animation */
+    @keyframes pulseGlow {
+      0%, 100% { box-shadow: 0 0 15px rgba(0, 255, 170, 0.4); }
+      50% { box-shadow: 0 0 25px rgba(0, 255, 170, 0.7); }
+    }
+    .animate-glow {
+      animation: pulseGlow 2.5s infinite ease-in-out;
+    }
+  </style>
+</head>
+<body class="bg-robloxBg text-white font-sans min-h-screen flex flex-col justify-between overflow-x-hidden selection:bg-robloxGreen selection:text-black">
+
+  <!-- TOP HEADER BANNER FOR DEMO INFO -->
+  <header class="w-full bg-robloxPanel/80 backdrop-blur border-b border-robloxBorder p-4 flex flex-col sm:flex-row justify-between items-center gap-3 z-10">
+    <div class="flex items-center gap-3">
+      <!-- BACK BUTTON TO EXPLOITS.HTML -->
+      <a href="exploits.html" class="bg-robloxPanel hover:bg-robloxBorder border border-robloxBorder text-gray-300 hover:text-white px-3.5 py-1.5 rounded-lg text-xs font-bold transition-all flex items-center gap-2 cursor-pointer">
+        <i class="fa-solid fa-arrow-left"></i> Torna Indietro
+      </a>
+      <div class="w-2.5 h-2.5 rounded-full bg-robloxGreen animate-ping ml-2"></div>
+      <span class="font-bold text-sm sm:text-base text-gray-200 uppercase tracking-wider">
+        Roblox remawed10 pannel function + desing
+      </span>
+    </div>
+    <div class="flex items-center gap-2 text-xs sm:text-sm text-gray-400">
+      <span class="bg-robloxBorder px-2.5 py-1 rounded text-robloxGreen font-mono">Tasto Scorciatoia: [G]</span>
+      <span class="hidden md:inline">| Supporta Frecce ↑↓, Invio e Numeri</span>
+    </div>
+  </header>
+
+  <!-- MAIN VIEWPORT CONTAINER -->
+  <main class="relative flex-1 w-full max-w-3xl mx-auto p-4 sm:p-6 flex flex-col items-center justify-center my-auto">
+    
+    <!-- ROBLOX PANEL INTERFACE SIMULATOR -->
+    <div class="w-full max-w-2xl flex flex-col items-center justify-center relative min-h-[480px]">
+      
+      <!-- START BUTTON (PREMI G) -->
+      <button id="startButton" class="animate-glow transition-all duration-300 hover:scale-105 active:scale-95 bg-robloxBg border-2 border-robloxGreen text-robloxGreen px-8 py-4 rounded-xl font-black text-xl tracking-wider uppercase flex items-center gap-3 shadow-neonGreen cursor-pointer">
+        <i class="fa-solid fa-terminal"></i>
+        PREMI G
+      </button>
+
+      <!-- MAIN SCRIPT GUI CONTAINER (Hidden by default) -->
+      <div id="mainPanel" class="hidden w-full bg-robloxBg border-2 border-robloxGreen/80 rounded-2xl shadow-2xl shadow-robloxGreen/10 overflow-hidden transition-all duration-300">
+        
+        <!-- HEADER -->
+        <div class="bg-robloxPanel px-5 py-4 flex items-center justify-between border-b border-robloxBorder">
+          <div class="flex items-center gap-3">
+            <i class="fa-solid fa-code text-robloxGreen text-xl"></i>
+            <h1 class="font-black text-lg sm:text-xl text-white tracking-wide">
+              REMAWED 10 &nbsp;<span class="text-xs sm:text-sm text-gray-400 font-normal">| &nbsp;PC EDITION v0.4</span>
+            </h1>
+          </div>
+          <button id="closeButton" class="w-9 h-9 bg-red-600 hover:bg-red-700 text-white font-bold rounded-lg flex items-center justify-center transition-colors cursor-pointer" title="Chiudi (ESC o G)">
+            ✕
+          </button>
+        </div>
+
+        <!-- SEARCH INPUT -->
+        <div class="p-4 sm:p-5 pb-2">
+          <div class="relative">
+            <i class="fa-solid fa-magnifying-glass absolute left-4 top-1/2 -translate-y-1/2 text-gray-400"></i>
+            <input 
+              type="text" 
+              id="searchInput" 
+              placeholder="Cerca per titolo..."
+              class="w-full bg-robloxPanel border border-robloxBorder focus:border-robloxGreen text-white text-sm rounded-xl pl-11 pr-4 py-3 outline-none transition-colors placeholder-gray-500 font-medium"
+              autocomplete="off"
+            />
+          </div>
+        </div>
+
+        <!-- SCROLLABLE LIST OF SCRIPTS -->
+        <div id="scrollContainer" class="px-4 sm:px-5 py-2 max-h-[300px] overflow-y-auto space-y-2">
+          <!-- Dynamic entries inserted here via JS -->
+        </div>
+
+        <!-- FOOTER BAR -->
+        <div class="p-4 sm:p-5 pt-3 bg-robloxBg border-t border-robloxBorder/50 flex flex-col sm:flex-row justify-between items-center gap-3">
+          <!-- Status text -->
+          <div id="statusText" class="text-xs sm:text-sm text-gray-400 font-medium truncate w-full sm:w-auto">
+            G: Chiudi | INVIO: Esegui | NUMERI: Seleziona
+          </div>
+          <!-- Number box indicator -->
+          <div id="numberBox" class="w-full sm:w-auto bg-robloxPanel border border-robloxGreen/40 text-robloxGreen text-xs sm:text-sm font-bold px-4 py-2 rounded-lg text-center font-mono tracking-wider min-w-[160px]">
+            DIGITA NUMERO...
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </main>
+
+  <!-- KEYBOARD CONTROLS GUIDE FOOTER -->
+  <footer class="w-full bg-robloxPanel/50 border-t border-robloxBorder py-3 px-4 text-center text-xs text-gray-400">
+    <div class="max-w-4xl mx-auto flex flex-wrap justify-center gap-4 sm:gap-8">
+      <span><strong class="text-white">G</strong>: Apri / Chiudi Panel</span>
+      <span><strong class="text-white">Frecce ↑ / ↓</strong>: Naviga Menu</span>
+      <span><strong class="text-white">Numeri (1-7)</strong>: Selezione Rapida</span>
+      <span><strong class="text-white">INVIO</strong>: Esegui Script</span>
+      <span><strong class="text-white">ESC</strong>: Chiudi Menu</span>
+    </div>
+  </footer>
+
+  <!-- SCRIPT LOGIC -->
+  <script>
+    // DATASET REPLICATED FROM LUA LOCALSCRIPT
+    const entries = [
+      {
+        id: 1,
+        title: "Remawed 10 Multi Pannel",
+        code: 'loadstring(game:HttpGet("https://pastebin.com/raw/DidddNBY"))()'
+      },
+      {
+        id: 2,
+        title: "Knife Script",
+        code: 'loadstring(game:HttpGet("https://pastebin.com/raw/zk803gry"))()'
+      },
+      {
+        id: 3,
+        title: "MM2 Mod",
+        code: 'loadstring(game:HttpGet("https://pastebin.com/raw/0VC7Bkdb"))()'
+      },
+      {
+        id: 4,
+        title: "Remawed 10 Fly GUI",
+        code: 'loadstring(game:HttpGet("https://raw.githubusercontent.com/Remastfe10/REMAWED10/refs/heads/main/fly%20gui%20fixed.txt"))()'
+      },
+      {
+        id: 5,
+        title: "Remawed10 fling",
+        code: 'loadstring(game:HttpGet("https://raw.githubusercontent.com/Remastfe10/REMAWED10/refs/heads/main/remawed10%20fling%20beta.txt"))()'
+      },
+      {
+        id: 6,
+        title: "Remawed10 slap battles mod",
+        code: 'loadstring(game:HttpGet("https://raw.githubusercontent.com/Remastfe10/REMAWED10/refs/heads/main/SLAP%20BATTLES%20SCRIPT.txt"))()'
+      },
+      {
+        id: 7,
+        title: "Remawed10 caos jenga mod",
+        code: 'loadstring(game:HttpGet("https://raw.githubusercontent.com/Remastfe10/REMAWED10/refs/heads/main/remawed10%20caos%20jenga%20mod.txt"))()'
+      }
+    ];
+
+    // STATE VARIABLES
+    let isPanelOpen = false;
+    let selectedIndex = 1;
+    let visibleIndices = [];
+    let inputBuffer = "";
+    let lastInputTime = 0;
+
+    // DOM ELEMENTS
+    const startButton = document.getElementById('startButton');
+    const mainPanel = document.getElementById('mainPanel');
+    const closeButton = document.getElementById('closeButton');
+    const searchInput = document.getElementById('searchInput');
+    const scrollContainer = document.getElementById('scrollContainer');
+    const numberBox = document.getElementById('numberBox');
+    const statusText = document.getElementById('statusText');
+
+    // OPEN / CLOSE PANEL
+    function openPanel() {
+      isPanelOpen = true;
+      startButton.classList.add('hidden');
+      mainPanel.classList.remove('hidden');
+      inputBuffer = "";
+      numberBox.innerText = "DIGITA NUMERO...";
+      refresh();
+    }
+
+    function closePanel() {
+      isPanelOpen = false;
+      mainPanel.classList.add('hidden');
+      startButton.classList.remove('hidden');
+    }
+
+    startButton.addEventListener('click', openPanel);
+    closeButton.addEventListener('click', closePanel);
+
+    // EXECUTE SELECTED SCRIPT
+    function executeSelected() {
+      if (!isPanelOpen) return;
+      const data = entries.find(e => e.id === selectedIndex);
+      if (!data) return;
+
+      statusText.innerText = "ESEGUENDO: " + data.title;
+
+      const activeRow = document.getElementById(`slot-row-${data.id}`);
+      if (activeRow) {
+        activeRow.classList.add('bg-robloxGreen/20');
+        setTimeout(() => {
+          activeRow.classList.remove('bg-robloxGreen/20');
+        }, 300);
+      }
+    }
+
+    // SCROLL AUTOMATICALLY TO SELECTED ITEM
+    function scrollToSelected() {
+      if (!isPanelOpen) return;
+      const targetRow = document.getElementById(`slot-row-${selectedIndex}`);
+      if (targetRow) {
+        targetRow.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      }
+    }
+
+    // REFRESH UI LIST
+    function refresh() {
+      if (!isPanelOpen) return;
+
+      scrollContainer.innerHTML = "";
+      visibleIndices = [];
+
+      const query = searchInput.value.toLowerCase().trim();
+
+      entries.forEach((data) => {
+        const matches = data.title.toLowerCase().includes(query);
+
+        if (matches) {
+          visibleIndices.push(data.id);
+
+          const isSelected = (selectedIndex === data.id);
+
+          const row = document.createElement('div');
+          row.id = `slot-row-${data.id}`;
+          row.className = `w-full flex items-center justify-between p-3 rounded-xl border transition-all cursor-pointer ${
+            isSelected 
+              ? 'bg-robloxGreenDark border-robloxGreen shadow-neonGreenSm' 
+              : 'bg-robloxPanel border-robloxBorder hover:border-gray-600'
+          }`;
+
+          row.innerHTML = `
+            <div class="flex items-center gap-4">
+              <span class="font-black text-xl w-7 text-center font-mono ${isSelected ? 'text-robloxGreen' : 'text-robloxGreen/70'}">
+                ${data.id}
+              </span>
+              <span class="font-bold text-sm sm:text-base ${isSelected ? 'text-white' : 'text-gray-300'}">
+                ${data.title}
+              </span>
+            </div>
+            <div class="text-xs ${isSelected ? 'text-robloxGreen' : 'text-gray-500'}">
+              <i class="fa-solid fa-chevron-right"></i>
+            </div>
+          `;
+
+          row.addEventListener('click', () => {
+            if (!isPanelOpen) return;
+            selectedIndex = data.id;
+            statusText.innerText = "SELEZIONATO: " + data.title;
+            refresh();
+            scrollToSelected();
+            executeSelected();
+          });
+
+          scrollContainer.appendChild(row);
+        }
+      });
+
+      setTimeout(scrollToSelected, 50);
+    }
+
+    searchInput.addEventListener('input', () => {
+      if (isPanelOpen) refresh();
+    });
+
+    // KEYBOARD INPUT MAP
+    const keyToNum = {
+      '0':'0', '1':'1', '2':'2', '3':'3', '4':'4',
+      '5':'5', '6':'6', '7':'7', '8':'8', '9':'9'
+    };
+
+    // GLOBAL KEYBOARD EVENT LISTENER
+    document.addEventListener('keydown', (e) => {
+      if ((e.key === 'g' || e.key === 'G') && document.activeElement !== searchInput) {
+        e.preventDefault();
+        if (isPanelOpen) {
+          closePanel();
+        } else {
+          openPanel();
+        }
+        return;
+      }
+
+      if (!isPanelOpen) return;
+      if (document.activeElement === searchInput) {
+        if (e.key === 'Escape') {
+          searchInput.blur();
+        }
+        return;
+      }
+
+      // DIRECT NUMERIC SELECTION
+      if (keyToNum[e.key]) {
+        const digit = keyToNum[e.key];
+        const now = Date.now() / 1000;
+        
+        if (now - lastInputTime > 1.2) {
+          inputBuffer = digit;
+        } else {
+          inputBuffer += digit;
+        }
+        lastInputTime = now;
+
+        const n = parseInt(inputBuffer, 10);
+        numberBox.innerText = "NUMERO: " + inputBuffer;
+
+        const exists = entries.some(item => item.id === n);
+        if (exists) {
+          const isVisible = visibleIndices.includes(n);
+          if (isVisible) {
+            selectedIndex = n;
+            const item = entries.find(e => e.id === n);
+            statusText.innerText = "SELEZIONATO: " + item.title;
+            refresh();
+            scrollToSelected();
+          } else {
+            statusText.innerText = "SLOT NON VISIBILE";
+          }
+        } else {
+          statusText.innerText = "SLOT NON ESISTENTE";
+        }
+        return;
+      }
+
+      // NAVIGATION KEYS
+      if (e.key === 'ArrowDown') {
+        e.preventDefault();
+        const pos = visibleIndices.indexOf(selectedIndex);
+        if (pos !== -1 && pos < visibleIndices.length - 1) {
+          selectedIndex = visibleIndices[pos + 1];
+        } else if (visibleIndices.length > 0) {
+          selectedIndex = visibleIndices[0];
+        }
+        refresh();
+        scrollToSelected();
+      } else if (e.key === 'ArrowUp') {
+        e.preventDefault();
+        const pos = visibleIndices.indexOf(selectedIndex);
+        if (pos > 0) {
+          selectedIndex = visibleIndices[pos - 1];
+        } else if (visibleIndices.length > 0) {
+          selectedIndex = visibleIndices[visibleIndices.length - 1];
+        }
+        refresh();
+        scrollToSelected();
+      } else if (e.key === 'Enter') {
+        e.preventDefault();
+        executeSelected();
+      } else if (e.key === 'Escape') {
+        closePanel();
+      }
+    });
+
+    console.log("REMAWED 10 PC EDITION v0.4 CLEAN LOADED (WEB DEMO)");
+  </script>
+</body>
+</html>
