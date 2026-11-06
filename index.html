@@ -10,23 +10,24 @@
 <link rel="shortcut icon" href="1.jpg" type="image/jpeg">
 <link rel="apple-touch-icon" href="1.jpg">
 
-<!-- Google Fonts Gaming -->
+<!-- Google Fonts Gaming & Futuristic -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Rajdhani:wght@600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;800;900&family=Rajdhani:wght@600;700;900&display=swap" rel="stylesheet">
 
 <style>
 :root {
-  --bg: #03050a;
-  --card-bg: rgba(10, 15, 29, 0.85);
-  --text: #f0f6ff;
-  --muted: #62748e;
-  --primary: #00f0ff;
-  --primary-glow: rgba(0, 240, 255, 0.4);
-  --secondary: #7000ff;
-  --accent: #ff0055;
-  --border: rgba(0, 240, 255, 0.25);
-  --active-color: #00ff66;
+  --bg-dark: #05050d;
+  --card-bg: rgba(13, 14, 28, 0.75);
+  --card-border: rgba(0, 240, 255, 0.3);
+  --text-main: #ffffff;
+  --text-muted: #8b9bb4;
+  --neon-cyan: #00f0ff;
+  --neon-pink: #ff007f;
+  --neon-purple: #9d00ff;
+  --neon-green: #00ff66;
+  --neon-yellow: #ffea00;
+  --neon-orange: #ff5500;
 }
 
 * { box-sizing: border-box; }
@@ -34,9 +35,8 @@
 body { 
   margin: 0; 
   font-family: 'Rajdhani', sans-serif;
-  background: var(--bg) url('2.jpg') no-repeat center center fixed;
-  background-size: cover;
-  color: var(--text); 
+  background-color: var(--bg-dark);
+  color: var(--text-main); 
   min-height: 100vh;
   position: relative;
   overflow-x: hidden;
@@ -55,194 +55,215 @@ body::before {
   position: fixed;
   top: 0; left: 0; width: 100%; height: 100%;
   background: 
-    linear-gradient(rgba(3, 5, 10, 0.88), rgba(3, 5, 10, 0.95)),
-    linear-gradient(90deg, rgba(0, 240, 255, 0.03) 1px, transparent 1px) 0 0 / 50px 50px,
-    linear-gradient(0deg, rgba(0, 240, 255, 0.03) 1px, transparent 1px) 0 0 / 50px 50px;
+    radial-gradient(circle at 20% 20%, rgba(255, 0, 127, 0.12) 0%, transparent 50%),
+    radial-gradient(circle at 80% 80%, rgba(0, 240, 255, 0.12) 0%, transparent 50%),
+    radial-gradient(circle at 50% 50%, rgba(157, 0, 255, 0.1) 0%, transparent 70%),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px) 0 0 / 50px 50px,
+    linear-gradient(0deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px) 0 0 / 50px 50px;
   z-index: -1;
   pointer-events: none;
 }
 
-.container { width: min(1200px, 92%); margin: auto; }
+.container { width: min(1280px, 94%); margin: auto; }
 
 header { padding: 45px 0 25px; text-align: center; position: relative; }
 
-/* Logo Principale */
+/* Logo Principale Circolare Ottimizzato */
 .top-logo {
   width: 210px;
   max-width: 80%;
-  height: auto;
-  margin: 0 auto 20px;
+  height: 210px;
+  margin: 0 auto 22px;
   display: block;
-  border-radius: 18px;
-  border: 2px solid var(--primary);
-  box-shadow: 0 0 30px var(--primary-glow), inset 0 0 15px var(--primary-glow);
-  transition: transform 0.4s ease, box-shadow 0.4s ease;
-  object-fit: contain;
+  border-radius: 50%;
+  border: 3px solid transparent;
+  background: linear-gradient(var(--bg-dark), var(--bg-dark)) padding-box,
+              linear-gradient(135deg, var(--neon-cyan), var(--neon-pink), var(--neon-purple), var(--neon-green)) border-box;
+  box-shadow: 0 0 30px rgba(0, 240, 255, 0.4), 0 0 50px rgba(255, 0, 127, 0.3);
+  transition: transform 0.4s ease, box-shadow 0.4s ease, filter 0.4s ease;
+  object-fit: cover;
+  animation: floatLogo 4s ease-in-out infinite alternate;
+}
+
+@keyframes floatLogo {
+  0% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-8px) rotate(1deg); }
+  100% { transform: translateY(0px) rotate(-1deg); }
 }
 
 .top-logo:hover {
-  transform: scale(1.05) rotate(1deg);
-  box-shadow: 0 0 45px rgba(0, 240, 255, 0.8);
+  transform: scale(1.08) rotate(2deg);
+  box-shadow: 0 0 50px rgba(0, 240, 255, 0.8), 0 0 80px rgba(255, 0, 127, 0.7);
 }
 
-/* Pulsante Roblox Gaming Cyber */
+/* Pulsante Roblox Gaming RGB Fluid */
 .btn-roblox {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 14px;
-  margin: 10px auto 25px;
-  padding: 16px 36px;
+  margin: 20px auto 25px;
+  padding: 18px 40px;
   font-family: 'Orbitron', sans-serif;
-  font-size: 17px;
+  font-size: 16px;
   font-weight: 900;
-  letter-spacing: 1.5px;
+  letter-spacing: 2px;
   color: #ffffff;
-  background: linear-gradient(135deg, #0052d4, #4364f7, #00f0ff);
-  background-size: 200% 200%;
-  animation: gradientMove 4s ease infinite;
+  background: linear-gradient(135deg, #ff007f, #7928ca, #00dfd8, #00ff66, #ffea00);
+  background-size: 300% 300%;
+  animation: rainbowMove 4s ease infinite;
   text-decoration: none;
-  clip-path: polygon(12px 0, 100% 0, 100% calc(100% - 12px), calc(100% - 12px) 100%, 0 100%, 0 12px);
-  border: 1px solid rgba(255, 255, 255, 0.4);
-  box-shadow: 0 0 25px rgba(67, 100, 247, 0.6);
+  clip-path: polygon(14px 0, 100% 0, 100% calc(100% - 14px), calc(100% - 14px) 100%, 0 100%, 0 14px);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  box-shadow: 0 0 35px rgba(255, 0, 127, 0.6), 0 0 25px rgba(0, 240, 255, 0.5);
   transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   cursor: pointer;
   text-transform: uppercase;
+  position: relative;
+  overflow: hidden;
 }
 
-@keyframes gradientMove {
+@keyframes rainbowMove {
   0% { background-position: 0% 50%; }
   50% { background-position: 100% 50%; }
   100% { background-position: 0% 50%; }
 }
 
 .btn-roblox:hover {
-  transform: translateY(-4px) scale(1.03);
-  box-shadow: 0 0 40px rgba(0, 240, 255, 0.8);
+  transform: translateY(-5px) scale(1.05);
+  box-shadow: 0 0 60px rgba(0, 240, 255, 0.9), 0 0 90px rgba(255, 0, 127, 0.8);
 }
 
 .btn-roblox .hand-icon {
   font-size: 22px;
-  animation: pulseIcon 1.5s infinite alternate;
+  animation: pulseIcon 1.2s infinite alternate;
 }
 
 @keyframes pulseIcon {
-  0% { transform: scale(1); }
-  100% { transform: scale(1.3); filter: drop-shadow(0 0 8px #00f0ff); }
+  0% { transform: scale(1); filter: drop-shadow(0 0 2px #fff); }
+  100% { transform: scale(1.35) rotate(10deg); filter: drop-shadow(0 0 12px #00f0ff); }
 }
-
-/* Badge HUD */
-.badge { 
-  display: inline-flex; 
-  align-items: center; 
-  gap: 12px; 
-  padding: 8px 22px; 
-  background: rgba(10, 16, 30, 0.85); 
-  color: var(--primary); 
-  font-family: 'Orbitron', sans-serif;
-  font-weight: 700; 
-  font-size: 13px;
-  letter-spacing: 1px;
-  backdrop-filter: blur(10px); 
-  border: 1px solid var(--border);
-  clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px);
-}
-.badge-img { height: 26px; width: auto; border-radius: 4px; object-fit: contain; }
 
 h1 { 
-  margin: 18px 0 8px; 
+  margin: 15px 0 10px; 
   font-family: 'Orbitron', sans-serif;
-  font-size: clamp(34px, 5.5vw, 62px); 
+  font-size: clamp(36px, 6vw, 68px); 
   font-weight: 900;
-  letter-spacing: 2px; 
+  letter-spacing: 3px; 
   text-transform: uppercase;
-  background: linear-gradient(180deg, #ffffff 30%, var(--primary) 100%);
+  background: linear-gradient(90deg, #ff007f, #00f0ff, #00ff66, #ffea00, #ff007f);
+  background-size: 200% auto;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  text-shadow: 0 0 35px var(--primary-glow);
+  animation: rainbowText 4s linear infinite;
+  filter: drop-shadow(0 0 25px rgba(0, 240, 255, 0.5));
+  position: relative;
+  display: inline-block;
+}
+
+@keyframes rainbowText {
+  to { background-position: 200% center; }
 }
 
 .subtitle { 
   margin: 0 auto; 
-  max-width: 720px; 
-  color: var(--muted); 
-  font-size: 18px; 
+  max-width: 760px; 
+  color: var(--text-muted); 
+  font-size: 19px; 
   font-weight: 700;
-  letter-spacing: 0.5px;
+  letter-spacing: 0.8px;
 }
-.subtitle b { color: var(--primary); }
+.subtitle b { 
+  color: var(--neon-cyan); 
+  text-shadow: 0 0 12px var(--neon-cyan); 
+}
 
 /* Control Panel / Toolbar */
 .control-panel {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 15px;
-  margin: 30px 0 25px;
-  background: rgba(10, 15, 29, 0.85);
-  padding: 12px 20px;
-  border: 1px solid var(--border);
-  backdrop-filter: blur(12px);
+  gap: 18px;
+  margin: 35px 0 32px;
+  background: rgba(13, 14, 28, 0.85);
+  padding: 16px 24px;
+  border: 1px solid var(--neon-cyan);
+  backdrop-filter: blur(16px);
   clip-path: polygon(15px 0, 100% 0, 100% calc(100% - 15px), calc(100% - 15px) 100%, 0 100%, 0 15px);
   flex-wrap: wrap;
+  box-shadow: 0 10px 35px rgba(0, 0, 0, 0.8), inset 0 0 20px rgba(0, 240, 255, 0.15);
 }
 
-.search-box { flex: 1; min-width: 250px; }
+.search-box { flex: 1; min-width: 260px; }
 
 #search { 
   width: 100%;
-  padding: 12px 18px; 
-  border: 1px solid rgba(0, 240, 255, 0.2);
-  background: rgba(5, 8, 16, 0.9);
-  color: var(--text); 
+  padding: 14px 20px; 
+  border: 2px solid rgba(0, 240, 255, 0.3);
+  background: rgba(4, 5, 14, 0.95);
+  color: var(--text-main); 
   font-family: 'Rajdhani', sans-serif;
-  font-size: 18px; 
+  font-size: 19px; 
   font-weight: 700;
   outline: none; 
   transition: all 0.3s ease;
+  border-radius: 6px;
 }
-#search::placeholder { color: #47586e; }
+#search::placeholder { color: #5a6e8c; }
 #search:focus { 
-  border-color: var(--primary); 
-  box-shadow: 0 0 15px var(--primary-glow); 
+  border-color: var(--neon-pink); 
+  box-shadow: 0 0 25px rgba(255, 0, 127, 0.5), inset 0 0 10px rgba(255, 0, 127, 0.2); 
 }
 
-/* Counter HUD Slot Attivi Disattivabile */
+/* Counter HUD Slot Attivi */
 .active-counter {
   font-family: 'Orbitron', sans-serif;
-  font-size: 14px;
+  font-size: 13px;
   font-weight: 800;
-  color: var(--active-color);
-  background: rgba(0, 255, 102, 0.08);
-  border: 1px solid rgba(0, 255, 102, 0.3);
-  padding: 10px 18px;
+  color: var(--neon-green);
+  background: rgba(0, 255, 102, 0.1);
+  border: 1.5px solid var(--neon-green);
+  padding: 13px 22px;
   display: flex;
   align-items: center;
-  gap: 8px;
-  letter-spacing: 1px;
-  box-shadow: 0 0 12px rgba(0, 255, 102, 0.15);
+  gap: 12px;
+  letter-spacing: 1.5px;
+  box-shadow: 0 0 20px rgba(0, 255, 102, 0.25);
   cursor: pointer;
   user-select: none;
-  transition: all 0.2s ease;
+  transition: all 0.3s ease;
+  clip-path: polygon(8px 0, 100% 0, 100% calc(100% - 8px), calc(100% - 8px) 100%, 0 100%, 0 8px);
+}
+
+.active-counter:hover {
+  background: rgba(0, 255, 102, 0.22);
+  box-shadow: 0 0 30px rgba(0, 255, 102, 0.6);
+  transform: translateY(-2px);
 }
 
 .active-counter.disabled {
-  color: var(--muted);
+  color: var(--text-muted);
   background: rgba(255, 255, 255, 0.03);
-  border-color: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.15);
   box-shadow: none;
 }
 
 .active-counter .status-dot {
-  width: 8px;
-  height: 8px;
+  width: 10px;
+  height: 10px;
   border-radius: 50%;
-  background: var(--active-color);
-  box-shadow: 0 0 8px var(--active-color);
-  animation: blink 1.2s infinite alternate;
+  background: var(--neon-green);
+  box-shadow: 0 0 12px var(--neon-green);
+  animation: blink 1s infinite alternate;
 }
+
+@keyframes blink {
+  0% { opacity: 0.3; transform: scale(0.8); }
+  100% { opacity: 1; transform: scale(1.3); }
+}
+
 .active-counter.disabled .status-dot {
-  background: var(--muted);
+  background: var(--text-muted);
   box-shadow: none;
   animation: none;
 }
@@ -251,110 +272,148 @@ h1 {
 .grid { 
   display: grid; 
   grid-template-columns: repeat(2, minmax(0, 1fr)); 
-  gap: 16px; 
+  gap: 20px; 
   padding-bottom: 60px; 
 }
 
 .slot { 
   display: flex; 
   align-items: center; 
-  gap: 14px; 
+  gap: 16px; 
   background: var(--card-bg);
-  border: 1px solid var(--border); 
-  padding: 14px 18px;
-  backdrop-filter: blur(12px); 
+  border: 1px solid rgba(0, 240, 255, 0.2); 
+  padding: 16px 22px;
+  backdrop-filter: blur(14px); 
   position: relative;
-  clip-path: polygon(12px 0, 100% 0, 100% calc(100% - 12px), calc(100% - 12px) 100%, 0 100%, 0 12px);
-  transition: transform 0.2s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+  clip-path: polygon(14px 0, 100% 0, 100% calc(100% - 14px), calc(100% - 14px) 100%, 0 100%, 0 14px);
+  transition: all 0.35s cubic-bezier(0.165, 0.84, 0.44, 1);
+  overflow: hidden;
+}
+
+/* Shimmer Light Reflection */
+.slot::before {
+  content: "";
+  position: absolute;
+  top: 0; left: -150%;
+  width: 100%; height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.15), transparent);
+  transition: left 0.7s ease;
+  pointer-events: none;
+}
+
+.slot:hover::before {
+  left: 150%;
 }
 
 .slot:hover {
-  transform: translateY(-2px);
-  border-color: var(--primary);
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.6), 0 0 15px rgba(0, 240, 255, 0.2);
+  transform: translateY(-4px) scale(1.01);
+  border-color: var(--neon-pink);
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.9), 0 0 25px rgba(255, 0, 127, 0.4);
 }
 
-.slot.is-active { border-left: 4px solid var(--active-color); }
-.slot.is-empty { border-left: 4px solid #334155; opacity: 0.75; }
+.slot.is-active { border-left: 5px solid var(--neon-green); }
+.slot.is-empty { border-left: 5px solid rgba(255, 255, 255, 0.15); opacity: 0.65; }
 
 .slot-number { 
-  width: 42px; 
-  height: 42px; 
+  width: 48px; 
+  height: 48px; 
   display: grid; 
   place-items: center;
-  background: rgba(0, 240, 255, 0.08); 
-  border: 1px solid rgba(0, 240, 255, 0.3);
-  color: var(--primary); 
+  background: linear-gradient(135deg, rgba(0, 240, 255, 0.15), rgba(157, 0, 255, 0.2)); 
+  border: 1px solid var(--neon-cyan);
+  color: var(--neon-cyan); 
   font-family: 'Orbitron', sans-serif;
   font-weight: 900; 
-  font-size: 15px;
+  font-size: 16px;
   flex: none; 
-  clip-path: polygon(6px 0, 100% 0, 100% calc(100% - 6px), calc(100% - 6px) 100%, 0 100%, 0 6px);
+  clip-path: polygon(8px 0, 100% 0, 100% calc(100% - 8px), calc(100% - 8px) 100%, 0 100%, 0 8px);
+  transition: all 0.3s ease;
+  text-shadow: 0 0 8px var(--neon-cyan);
 }
 
-.slot-content { min-width: 0; flex: 1; display: grid; gap: 3px; }
+.slot:hover .slot-number {
+  background: linear-gradient(135deg, var(--neon-pink), var(--neon-purple));
+  color: #ffffff;
+  border-color: var(--neon-pink);
+  box-shadow: 0 0 20px var(--neon-pink);
+  text-shadow: 0 0 10px #ffffff;
+}
+
+.slot-content { min-width: 0; flex: 1; display: grid; gap: 4px; }
 
 .slot-content input { 
   width: 100%; 
   border: 0; 
   outline: 0; 
   background: transparent; 
-  color: var(--text); 
+  color: var(--text-main); 
   font-family: 'Rajdhani', sans-serif;
-  font-size: 16px;
+  font-size: 17px;
 }
 
 .slot-title { 
   font-weight: 700; 
-  font-size: 17px; 
-  letter-spacing: 0.5px;
+  font-size: 19px; 
+  letter-spacing: 0.6px;
   color: #ffffff; 
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
 }
 
 .slot-url { 
-  color: var(--muted); 
+  color: var(--text-muted); 
   font-size: 14px; 
   font-weight: 600;
 }
 
 .go { 
-  border: 0; 
-  background: linear-gradient(135deg, var(--primary), #0088ff); 
-  color: #030712; 
+  border: 1px solid rgba(255, 255, 255, 0.5); 
+  background: linear-gradient(135deg, var(--neon-cyan), var(--neon-purple)); 
+  color: #ffffff; 
   font-family: 'Orbitron', sans-serif;
   font-weight: 900; 
-  font-size: 12px;
-  letter-spacing: 1px;
-  padding: 12px 18px;
+  font-size: 13px;
+  letter-spacing: 1.5px;
+  padding: 13px 22px;
   cursor: pointer; 
   clip-path: polygon(8px 0, 100% 0, 100% calc(100% - 8px), calc(100% - 8px) 100%, 0 100%, 0 8px);
-  box-shadow: 0 0 12px rgba(0, 240, 255, 0.3);
-  transition: all 0.2s ease;
+  box-shadow: 0 0 18px rgba(0, 240, 255, 0.4);
+  transition: all 0.25s ease;
   flex: none;
+  text-shadow: 0 0 8px rgba(0, 0, 0, 0.8);
 }
 
 .go:hover { 
-  background: linear-gradient(135deg, #00f0ff, var(--secondary));
-  color: #ffffff;
-  box-shadow: 0 0 22px rgba(112, 0, 255, 0.8);
-  transform: scale(1.05);
+  background: linear-gradient(135deg, var(--neon-pink), var(--neon-yellow));
+  color: #000000;
+  box-shadow: 0 0 30px rgba(255, 0, 127, 0.8), 0 0 15px rgba(255, 234, 0, 0.6);
+  transform: scale(1.07);
+  text-shadow: none;
+}
+
+.slot.is-empty .go {
+  opacity: 0.4;
+  cursor: not-allowed;
 }
 
 footer { 
   text-align: center; 
-  color: var(--muted); 
-  padding: 0 0 40px; 
+  color: var(--text-muted); 
+  padding: 0 0 45px; 
   font-size: 14px; 
   font-weight: 700;
-  letter-spacing: 1.5px;
+  letter-spacing: 2px;
   font-family: 'Orbitron', sans-serif;
+  border-top: 1px solid rgba(0, 240, 255, 0.2);
+  margin-top: 20px;
+  padding-top: 35px;
+  text-shadow: 0 0 10px rgba(0, 240, 255, 0.3);
 }
 
 @media (max-width: 768px) { 
   .grid { grid-template-columns: 1fr; } 
   h1 { font-size: 32px; }
   .control-panel { flex-direction: column; align-items: stretch; }
-  .btn-roblox { font-size: 14px; padding: 14px 20px; }
+  .btn-roblox { font-size: 14px; padding: 15px 24px; }
 }
 </style>
 </head>
@@ -363,17 +422,14 @@ footer {
 <canvas id="bg-canvas"></canvas>
 
 <header class="container">
-  <img src="1.jpg" alt="Logo Principale" class="top-logo">
+  <img src="1.jpg" alt="Logo Principale" class="top-logo" onerror="this.src='https://placehold.co/200x200/0d0e1c/00f0ff?text=REMAWED10'">
   
+  <h1 id="mainTitle">REMAWED10 HUB</h1>
+  <p class="subtitle">TUTTI I SITI DI QUESTO HUB. <b>VAI A VISITARLI! ↗️</b> (premi VAI per aprire il sito.)</p>
+
   <a href="roblox.html" class="btn-roblox">
     <span class="hand-icon">🎮</span> VISITA I PROGRESSI DI ROBLOX
   </a>
-
-  <div>
-    <span class="badge"><img src="1.jpg" alt="Logo" class="badge-img"> 50 SLOTS • GAMING HUB</span>
-  </div>
-  <h1 id="mainTitle">REMAWED10 HUB</h1>
-  <p class="subtitle">TUTTI I SITI DI QUESTO HUB. <b>VAI A VISITARLI! ↗️</b> (premi VAI per aprire il sito.)</p>
 </header>
 
 <main class="container">
@@ -389,8 +445,8 @@ footer {
   </div>
 
   <section class="grid" id="grid">
-
-    <article class="slot">
+    <!-- Slot 1 -->
+    <article class="slot is-active">
       <div class="slot-number">1</div>
       <div class="slot-content">
         <input class="slot-title" type="text" placeholder="Titolo del sito 1" aria-label="Titolo sito 1" value="remawed10 food menu editor" readonly>
@@ -399,7 +455,8 @@ footer {
       <button class="go" type="button">VAI ↗️</button>
     </article>
 
-    <article class="slot">
+    <!-- Slot 2 -->
+    <article class="slot is-active">
       <div class="slot-number">2</div>
       <div class="slot-content">
         <input class="slot-title" type="text" placeholder="Titolo del sito 2" aria-label="Titolo sito 2" value="SCARICA PROGRAMMI WINDOWS DI QUESTO HUB" readonly>
@@ -408,602 +465,238 @@ footer {
       <button class="go" type="button">VAI ↗️</button>
     </article>
 
-     <article class="slot">
+    <!-- Slot 3 -->
+    <article class="slot is-active">
       <div class="slot-number">3</div>
       <div class="slot-content">
-        <input class="slot-title" type="text" placeholder="Titolo del sito 2" aria-label="Titolo sito 2" value="REMAWED10 MOBILE .HTML CODER" readonly>
-        <input class="slot-url" type="url" placeholder="https://esempio.it" aria-label="Link sito 2" value="https://remastfe10.github.io/mobilecoderremawed10/" readonly>
+        <input class="slot-title" type="text" placeholder="Titolo del sito 3" aria-label="Titolo sito 3" value="REMAWED10 MOBILE .HTML CODER" readonly>
+        <input class="slot-url" type="url" placeholder="https://esempio.it" aria-label="Link sito 3" value="https://remastfe10.github.io/mobilecoderremawed10/" readonly>
       </div>
       <button class="go" type="button">VAI ↗️</button>
     </article>
-
-
-    <article class="slot">
-      <div class="slot-number">4</div>
-      <div class="slot-content">
-        <input class="slot-title" type="text" placeholder="Titolo del sito 4" aria-label="Titolo sito 4" readonly>
-        <input class="slot-url" type="url" placeholder="https://esempio.it" aria-label="Link sito 4" readonly>
-      </div>
-      <button class="go" type="button">VAI ↗️</button>
-    </article>
-
-    <article class="slot">
-      <div class="slot-number">5</div>
-      <div class="slot-content">
-        <input class="slot-title" type="text" placeholder="Titolo del sito 5" aria-label="Titolo sito 5" readonly>
-        <input class="slot-url" type="url" placeholder="https://esempio.it" aria-label="Link sito 5" readonly>
-      </div>
-      <button class="go" type="button">VAI ↗️</button>
-    </article>
-
-    <article class="slot">
-      <div class="slot-number">6</div>
-      <div class="slot-content">
-        <input class="slot-title" type="text" placeholder="Titolo del sito 6" aria-label="Titolo sito 6" readonly>
-        <input class="slot-url" type="url" placeholder="https://esempio.it" aria-label="Link sito 6" readonly>
-      </div>
-      <button class="go" type="button">VAI ↗️</button>
-    </article>
-
-    <article class="slot">
-      <div class="slot-number">7</div>
-      <div class="slot-content">
-        <input class="slot-title" type="text" placeholder="Titolo del sito 7" aria-label="Titolo sito 7" readonly>
-        <input class="slot-url" type="url" placeholder="https://esempio.it" aria-label="Link sito 7" readonly>
-      </div>
-      <button class="go" type="button">VAI ↗️</button>
-    </article>
-
-    <article class="slot">
-      <div class="slot-number">8</div>
-      <div class="slot-content">
-        <input class="slot-title" type="text" placeholder="Titolo del sito 8" aria-label="Titolo sito 8" readonly>
-        <input class="slot-url" type="url" placeholder="https://esempio.it" aria-label="Link sito 8" readonly>
-      </div>
-      <button class="go" type="button">VAI ↗️</button>
-    </article>
-
-    <article class="slot">
-      <div class="slot-number">9</div>
-      <div class="slot-content">
-        <input class="slot-title" type="text" placeholder="Titolo del sito 9" aria-label="Titolo sito 9" readonly>
-        <input class="slot-url" type="url" placeholder="https://esempio.it" aria-label="Link sito 9" readonly>
-      </div>
-      <button class="go" type="button">VAI ↗️</button>
-    </article>
-
-    <article class="slot">
-      <div class="slot-number">10</div>
-      <div class="slot-content">
-        <input class="slot-title" type="text" placeholder="Titolo del sito 10" aria-label="Titolo sito 10" readonly>
-        <input class="slot-url" type="url" placeholder="https://esempio.it" aria-label="Link sito 10" readonly>
-      </div>
-      <button class="go" type="button">VAI ↗️</button>
-    </article>
-
-    <article class="slot">
-      <div class="slot-number">11</div>
-      <div class="slot-content">
-        <input class="slot-title" type="text" placeholder="Titolo del sito 11" aria-label="Titolo sito 11" readonly>
-        <input class="slot-url" type="url" placeholder="https://esempio.it" aria-label="Link sito 11" readonly>
-      </div>
-      <button class="go" type="button">VAI ↗️</button>
-    </article>
-
-    <article class="slot">
-      <div class="slot-number">12</div>
-      <div class="slot-content">
-        <input class="slot-title" type="text" placeholder="Titolo del sito 12" aria-label="Titolo sito 12" readonly>
-        <input class="slot-url" type="url" placeholder="https://esempio.it" aria-label="Link sito 12" readonly>
-      </div>
-      <button class="go" type="button">VAI ↗️</button>
-    </article>
-
-    <article class="slot">
-      <div class="slot-number">13</div>
-      <div class="slot-content">
-        <input class="slot-title" type="text" placeholder="Titolo del sito 13" aria-label="Titolo sito 13" readonly>
-        <input class="slot-url" type="url" placeholder="https://esempio.it" aria-label="Link sito 13" readonly>
-      </div>
-      <button class="go" type="button">VAI ↗️</button>
-    </article>
-
-    <article class="slot">
-      <div class="slot-number">14</div>
-      <div class="slot-content">
-        <input class="slot-title" type="text" placeholder="Titolo del sito 14" aria-label="Titolo sito 14" readonly>
-        <input class="slot-url" type="url" placeholder="https://esempio.it" aria-label="Link sito 14" readonly>
-      </div>
-      <button class="go" type="button">VAI ↗️</button>
-    </article>
-
-    <article class="slot">
-      <div class="slot-number">15</div>
-      <div class="slot-content">
-        <input class="slot-title" type="text" placeholder="Titolo del sito 15" aria-label="Titolo sito 15" readonly>
-        <input class="slot-url" type="url" placeholder="https://esempio.it" aria-label="Link sito 15" readonly>
-      </div>
-      <button class="go" type="button">VAI ↗️</button>
-    </article>
-
-    <article class="slot">
-      <div class="slot-number">16</div>
-      <div class="slot-content">
-        <input class="slot-title" type="text" placeholder="Titolo del sito 16" aria-label="Titolo sito 16" readonly>
-        <input class="slot-url" type="url" placeholder="https://esempio.it" aria-label="Link sito 16" readonly>
-      </div>
-      <button class="go" type="button">VAI ↗️</button>
-    </article>
-
-    <article class="slot">
-      <div class="slot-number">17</div>
-      <div class="slot-content">
-        <input class="slot-title" type="text" placeholder="Titolo del sito 17" aria-label="Titolo sito 17" readonly>
-        <input class="slot-url" type="url" placeholder="https://esempio.it" aria-label="Link sito 17" readonly>
-      </div>
-      <button class="go" type="button">VAI ↗️</button>
-    </article>
-
-    <article class="slot">
-      <div class="slot-number">18</div>
-      <div class="slot-content">
-        <input class="slot-title" type="text" placeholder="Titolo del sito 18" aria-label="Titolo sito 18" readonly>
-        <input class="slot-url" type="url" placeholder="https://esempio.it" aria-label="Link sito 18" readonly>
-      </div>
-      <button class="go" type="button">VAI ↗️</button>
-    </article>
-
-    <article class="slot">
-      <div class="slot-number">19</div>
-      <div class="slot-content">
-        <input class="slot-title" type="text" placeholder="Titolo del sito 19" aria-label="Titolo sito 19" readonly>
-        <input class="slot-url" type="url" placeholder="https://esempio.it" aria-label="Link sito 19" readonly>
-      </div>
-      <button class="go" type="button">VAI ↗️</button>
-    </article>
-
-    <article class="slot">
-      <div class="slot-number">20</div>
-      <div class="slot-content">
-        <input class="slot-title" type="text" placeholder="Titolo del sito 20" aria-label="Titolo sito 20" readonly>
-        <input class="slot-url" type="url" placeholder="https://esempio.it" aria-label="Link sito 20" readonly>
-      </div>
-      <button class="go" type="button">VAI ↗️</button>
-    </article>
-
-    <article class="slot">
-      <div class="slot-number">21</div>
-      <div class="slot-content">
-        <input class="slot-title" type="text" placeholder="Titolo del sito 21" aria-label="Titolo sito 21" readonly>
-        <input class="slot-url" type="url" placeholder="https://esempio.it" aria-label="Link sito 21" readonly>
-      </div>
-      <button class="go" type="button">VAI ↗️</button>
-    </article>
-
-    <article class="slot">
-      <div class="slot-number">22</div>
-      <div class="slot-content">
-        <input class="slot-title" type="text" placeholder="Titolo del sito 22" aria-label="Titolo sito 22" readonly>
-        <input class="slot-url" type="url" placeholder="https://esempio.it" aria-label="Link sito 22" readonly>
-      </div>
-      <button class="go" type="button">VAI ↗️</button>
-    </article>
-
-    <article class="slot">
-      <div class="slot-number">23</div>
-      <div class="slot-content">
-        <input class="slot-title" type="text" placeholder="Titolo del sito 23" aria-label="Titolo sito 23" readonly>
-        <input class="slot-url" type="url" placeholder="https://esempio.it" aria-label="Link sito 23" readonly>
-      </div>
-      <button class="go" type="button">VAI ↗️</button>
-    </article> 
-
-    <article class="slot">
-      <div class="slot-number">24</div>
-      <div class="slot-content">
-        <input class="slot-title" type="text" placeholder="Titolo del sito 24" aria-label="Titolo sito 24" readonly>
-        <input class="slot-url" type="url" placeholder="https://esempio.it" aria-label="Link sito 24" readonly>
-      </div>
-      <button class="go" type="button">VAI ↗️</button>
-    </article>
-
-    <article class="slot">
-      <div class="slot-number">25</div>
-      <div class="slot-content">
-        <input class="slot-title" type="text" placeholder="Titolo del sito 25" aria-label="Titolo sito 25" readonly>
-        <input class="slot-url" type="url" placeholder="https://esempio.it" aria-label="Link sito 25" readonly>
-      </div>
-      <button class="go" type="button">VAI ↗️</button>
-    </article>
-
-    <article class="slot">
-      <div class="slot-number">26</div>
-      <div class="slot-content">
-        <input class="slot-title" type="text" placeholder="Titolo del sito 26" aria-label="Titolo sito 26" readonly>
-        <input class="slot-url" type="url" placeholder="https://esempio.it" aria-label="Link sito 26" readonly>
-      </div>
-      <button class="go" type="button">VAI ↗️</button>
-    </article>
-
-    <article class="slot">
-      <div class="slot-number">27</div>
-      <div class="slot-content">
-        <input class="slot-title" type="text" placeholder="Titolo del sito 27" aria-label="Titolo sito 27" readonly>
-        <input class="slot-url" type="url" placeholder="https://esempio.it" aria-label="Link sito 27" readonly>
-      </div>
-      <button class="go" type="button">VAI ↗️</button>
-    </article>
-
-    <article class="slot">
-      <div class="slot-number">28</div>
-      <div class="slot-content">
-        <input class="slot-title" type="text" placeholder="Titolo del sito 28" aria-label="Titolo sito 28" readonly>
-        <input class="slot-url" type="url" placeholder="https://esempio.it" aria-label="Link sito 28" readonly>
-      </div>
-      <button class="go" type="button">VAI ↗️</button>
-    </article>
-
-    <article class="slot">
-      <div class="slot-number">29</div>
-      <div class="slot-content">
-        <input class="slot-title" type="text" placeholder="Titolo del sito 29" aria-label="Titolo sito 29" readonly>
-        <input class="slot-url" type="url" placeholder="https://esempio.it" aria-label="Link sito 29" readonly>
-      </div>
-      <button class="go" type="button">VAI ↗️</button>
-    </article>
-
-    <article class="slot">
-      <div class="slot-number">30</div>
-      <div class="slot-content">
-        <input class="slot-title" type="text" placeholder="Titolo del sito 30" aria-label="Titolo sito 30" readonly>
-        <input class="slot-url" type="url" placeholder="https://esempio.it" aria-label="Link sito 30" readonly>
-      </div>
-      <button class="go" type="button">VAI ↗️</button>
-    </article>
-
-    <article class="slot">
-      <div class="slot-number">31</div>
-      <div class="slot-content">
-        <input class="slot-title" type="text" placeholder="Titolo del sito 31" aria-label="Titolo sito 31" readonly>
-        <input class="slot-url" type="url" placeholder="https://esempio.it" aria-label="Link sito 31" readonly>
-      </div>
-      <button class="go" type="button">VAI ↗️</button>
-    </article>
-
-    <article class="slot">
-      <div class="slot-number">32</div>
-      <div class="slot-content">
-        <input class="slot-title" type="text" placeholder="Titolo del sito 32" aria-label="Titolo sito 32" readonly>
-        <input class="slot-url" type="url" placeholder="https://esempio.it" aria-label="Link sito 32" readonly>
-      </div>
-      <button class="go" type="button">VAI ↗️</button>
-    </article>
-
-    <article class="slot">
-      <div class="slot-number">33</div>
-      <div class="slot-content">
-        <input class="slot-title" type="text" placeholder="Titolo del sito 33" aria-label="Titolo sito 33" readonly>
-        <input class="slot-url" type="url" placeholder="https://esempio.it" aria-label="Link sito 33" readonly>
-      </div>
-      <button class="go" type="button">VAI ↗️</button>
-    </article>
-
-    <article class="slot">
-      <div class="slot-number">34</div>
-      <div class="slot-content">
-        <input class="slot-title" type="text" placeholder="Titolo del sito 34" aria-label="Titolo sito 34" readonly>
-        <input class="slot-url" type="url" placeholder="https://esempio.it" aria-label="Link sito 34" readonly>
-      </div>
-      <button class="go" type="button">VAI ↗️</button>
-    </article>
-
-    <article class="slot">
-      <div class="slot-number">35</div>
-      <div class="slot-content">
-        <input class="slot-title" type="text" placeholder="Titolo del sito 35" aria-label="Titolo sito 35" readonly>
-        <input class="slot-url" type="url" placeholder="https://esempio.it" aria-label="Link sito 35" readonly>
-      </div>
-      <button class="go" type="button">VAI ↗️</button>
-    </article>
-
-    <article class="slot">
-      <div class="slot-number">36</div>
-      <div class="slot-content">
-        <input class="slot-title" type="text" placeholder="Titolo del sito 36" aria-label="Titolo sito 36" readonly>
-        <input class="slot-url" type="url" placeholder="https://esempio.it" aria-label="Link sito 36" readonly>
-      </div>
-      <button class="go" type="button">VAI ↗️</button>
-    </article>
-
-    <article class="slot">
-      <div class="slot-number">37</div>
-      <div class="slot-content">
-        <input class="slot-title" type="text" placeholder="Titolo del sito 37" aria-label="Titolo sito 37" readonly>
-        <input class="slot-url" type="url" placeholder="https://esempio.it" aria-label="Link sito 37" readonly>
-      </div>
-      <button class="go" type="button">VAI ↗️</button>
-    </article>
-
-    <article class="slot">
-      <div class="slot-number">38</div>
-      <div class="slot-content">
-        <input class="slot-title" type="text" placeholder="Titolo del sito 38" aria-label="Titolo sito 38" readonly>
-        <input class="slot-url" type="url" placeholder="https://esempio.it" aria-label="Link sito 38" readonly>
-      </div>
-      <button class="go" type="button">VAI ↗️</button>
-    </article>
-
-    <article class="slot">
-      <div class="slot-number">39</div>
-      <div class="slot-content">
-        <input class="slot-title" type="text" placeholder="Titolo del sito 39" aria-label="Titolo sito 39" readonly>
-        <input class="slot-url" type="url" placeholder="https://esempio.it" aria-label="Link sito 39" readonly>
-      </div>
-      <button class="go" type="button">VAI ↗️</button>
-    </article>
-
-    <article class="slot">
-      <div class="slot-number">40</div>
-      <div class="slot-content">
-        <input class="slot-title" type="text" placeholder="Titolo del sito 40" aria-label="Titolo sito 40" readonly>
-        <input class="slot-url" type="url" placeholder="https://esempio.it" aria-label="Link sito 40" readonly>
-      </div>
-      <button class="go" type="button">VAI ↗️</button>
-    </article>
-
-    <article class="slot">
-      <div class="slot-number">41</div>
-      <div class="slot-content">
-        <input class="slot-title" type="text" placeholder="Titolo del sito 41" aria-label="Titolo sito 41" readonly>
-        <input class="slot-url" type="url" placeholder="https://esempio.it" aria-label="Link sito 41" readonly>
-      </div>
-      <button class="go" type="button">VAI ↗️</button>
-    </article>
-
-    <article class="slot">
-      <div class="slot-number">42</div>
-      <div class="slot-content">
-        <input class="slot-title" type="text" placeholder="Titolo del sito 42" aria-label="Titolo sito 42" readonly>
-        <input class="slot-url" type="url" placeholder="https://esempio.it" aria-label="Link sito 42" readonly>
-      </div>
-      <button class="go" type="button">VAI ↗️</button>
-    </article>
-
-    <article class="slot">
-      <div class="slot-number">43</div>
-      <div class="slot-content">
-        <input class="slot-title" type="text" placeholder="Titolo del sito 43" aria-label="Titolo sito 43" readonly>
-        <input class="slot-url" type="url" placeholder="https://esempio.it" aria-label="Link sito 43" readonly>
-      </div>
-      <button class="go" type="button">VAI ↗️</button>
-    </article>
-
-    <article class="slot">
-      <div class="slot-number">44</div>
-      <div class="slot-content">
-        <input class="slot-title" type="text" placeholder="Titolo del sito 44" aria-label="Titolo sito 44" readonly>
-        <input class="slot-url" type="url" placeholder="https://esempio.it" aria-label="Link sito 44" readonly>
-      </div>
-      <button class="go" type="button">VAI ↗️</button>
-    </article>
-
-    <article class="slot">
-      <div class="slot-number">45</div>
-      <div class="slot-content">
-        <input class="slot-title" type="text" placeholder="Titolo del sito 45" aria-label="Titolo sito 45" readonly>
-        <input class="slot-url" type="url" placeholder="https://esempio.it" aria-label="Link sito 45" readonly>
-      </div>
-      <button class="go" type="button">VAI ↗️</button>
-    </article>
-
-    <article class="slot">
-      <div class="slot-number">46</div>
-      <div class="slot-content">
-        <input class="slot-title" type="text" placeholder="Titolo del sito 46" aria-label="Titolo sito 46" readonly>
-        <input class="slot-url" type="url" placeholder="https://esempio.it" aria-label="Link sito 46" readonly>
-      </div>
-      <button class="go" type="button">VAI ↗️</button>
-    </article>
-
-    <article class="slot">
-      <div class="slot-number">47</div>
-      <div class="slot-content">
-        <input class="slot-title" type="text" placeholder="Titolo del sito 47" aria-label="Titolo sito 47" readonly>
-        <input class="slot-url" type="url" placeholder="https://esempio.it" aria-label="Link sito 47" readonly>
-      </div>
-      <button class="go" type="button">VAI ↗️</button>
-    </article>
-
-    <article class="slot">
-      <div class="slot-number">48</div>
-      <div class="slot-content">
-        <input class="slot-title" type="text" placeholder="Titolo del sito 48" aria-label="Titolo sito 48" readonly>
-        <input class="slot-url" type="url" placeholder="https://esempio.it" aria-label="Link sito 48" readonly>
-      </div>
-      <button class="go" type="button">VAI ↗️</button>
-    </article>
-
-    <article class="slot">
-      <div class="slot-number">49</div>
-      <div class="slot-content">
-        <input class="slot-title" type="text" placeholder="Titolo del sito 49" aria-label="Titolo sito 49" readonly>
-        <input class="slot-url" type="url" placeholder="https://esempio.it" aria-label="Link sito 49" readonly>
-      </div>
-      <button class="go" type="button">VAI ↗️</button>
-    </article>
-
-    <article class="slot">
-      <div class="slot-number">50</div>
-      <div class="slot-content">
-        <input class="slot-title" type="text" placeholder="Titolo del sito 50" aria-label="Titolo sito 50" readonly>
-        <input class="slot-url" type="url" placeholder="https://esempio.it" aria-label="Link sito 50" readonly>
-      </div>
-      <button class="go" type="button">VAI ↗️</button>
-    </article>
-
-  </section>
-</main>
-
-<footer>⚡ REMAWED10 HUB • I LINK SI APRONO IN UNA NUOVA SCHEDA ⚡</footer>
+    <footer>⚡ REMAWED10 HUB • VIBRANT GAMING EDITION • I LINK SI APRONO IN UNA NUOVA SCHEDA ⚡</footer>
 
 <script>
-// SFX Audio Synth
+// --- AUDIO SYNTHESIZER (Web Audio API) ---
 const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-function playSound(type) {
-  if (audioCtx.state === 'suspended') audioCtx.resume();
-  const osc = audioCtx.createOscillator();
-  const gain = audioCtx.createGain();
-  osc.connect(gain);
-  gain.connect(audioCtx.destination);
 
-  if (type === 'hover') {
-    osc.frequency.setValueAtTime(400, audioCtx.currentTime);
-    osc.frequency.exponentialRampToValueAtTime(800, audioCtx.currentTime + 0.05);
-    gain.gain.setValueAtTime(0.02, audioCtx.currentTime);
-    gain.gain.linearRampToValueAtTime(0, audioCtx.currentTime + 0.05);
-    osc.start(); osc.stop(audioCtx.currentTime + 0.05);
-  } else if (type === 'click') {
-    osc.frequency.setValueAtTime(600, audioCtx.currentTime);
-    osc.frequency.exponentialRampToValueAtTime(200, audioCtx.currentTime + 0.08);
-    gain.gain.setValueAtTime(0.05, audioCtx.currentTime);
-    gain.gain.linearRampToValueAtTime(0, audioCtx.currentTime + 0.08);
-    osc.start(); osc.stop(audioCtx.currentTime + 0.08);
+function playSound(type) {
+  if (audioCtx.state === 'suspended') {
+    audioCtx.resume();
   }
+  try {
+    const osc = audioCtx.createOscillator();
+    const gain = audioCtx.createGain();
+    osc.connect(gain);
+    gain.connect(audioCtx.destination);
+
+    if (type === 'hover') {
+      osc.type = 'sine';
+      osc.frequency.setValueAtTime(450, audioCtx.currentTime);
+      osc.frequency.exponentialRampToValueAtTime(850, audioCtx.currentTime + 0.05);
+      gain.gain.setValueAtTime(0.02, audioCtx.currentTime);
+      gain.gain.linearRampToValueAtTime(0, audioCtx.currentTime + 0.05);
+      osc.start();
+      osc.stop(audioCtx.currentTime + 0.05);
+    } else if (type === 'click') {
+      osc.type = 'sawtooth';
+      osc.frequency.setValueAtTime(900, audioCtx.currentTime);
+      osc.frequency.exponentialRampToValueAtTime(300, audioCtx.currentTime + 0.09);
+      gain.gain.setValueAtTime(0.06, audioCtx.currentTime);
+      gain.gain.linearRampToValueAtTime(0, audioCtx.currentTime + 0.09);
+      osc.start();
+      osc.stop(audioCtx.currentTime + 0.09);
+    }
+  } catch(e) {}
 }
 
-const search = document.getElementById('search');
-const activeCountDisplay = document.getElementById('activeCountDisplay');
-const activeCounterBtn = document.getElementById('activeCounterBtn');
+let countActiveEnabled = true;
 
-let isCounterActive = true;
-
-// Calcolo in tempo reale degli slot attivi
-function updateActiveCounter() {
-  if (!isCounterActive) {
-    activeCountDisplay.innerText = "ATTIVI: DISATTIVATO";
-    activeCounterBtn.classList.add('disabled');
-    document.querySelectorAll('.slot').forEach(card => {
-      card.classList.remove('is-active', 'is-empty');
-    });
-    return;
-  }
-
-  activeCounterBtn.classList.remove('disabled');
+// Inizializzazione interazioni sugli slot reali
+function initSlotsBehavior() {
+  const slots = document.querySelectorAll('.slot');
   let activeCount = 0;
 
-  document.querySelectorAll('.slot').forEach(card => {
-    const url = card.querySelector('.slot-url').value.trim();
-    if (url && url !== '') {
+  slots.forEach(article => {
+    const titleInput = article.querySelector('.slot-title');
+    const urlInput = article.querySelector('.slot-url');
+    const hasData = Boolean(titleInput.value.trim() || urlInput.value.trim());
+
+    if (hasData) {
       activeCount++;
-      card.classList.add('is-active');
-      card.classList.remove('is-empty');
-    } else {
-      card.classList.add('is-empty');
-      card.classList.remove('is-active');
+      article.classList.remove('is-empty');
+      article.classList.add('is-active');
     }
+
+    const goBtn = article.querySelector('.go');
+    goBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      playSound('click');
+      const targetUrl = urlInput.value.trim();
+      if (targetUrl) {
+        window.open(targetUrl, '_blank');
+      }
+    });
+
+    article.addEventListener('mouseenter', () => playSound('hover'));
   });
 
-  activeCountDisplay.innerText = `ATTIVI: ${activeCount} / 50`;
+  updateActiveCounterDisplay(activeCount);
 }
 
-// Disattivazione/Attivazione manuale del contatore al click
-activeCounterBtn.addEventListener('click', () => {
-  isCounterActive = !isCounterActive;
-  updateActiveCounter();
-});
-
-// Inizializza contatore
-updateActiveCounter();
-
-// Apertura Link
-function openUrl(card) {
-  const input = card.querySelector('.slot-url');
-  let url = input.value.trim();
-
-  if (!url) {
-    playSound('hover');
-    return alert('⚠️ Inserisci o assegna prima un link a questo slot.');
+function updateActiveCounterDisplay(count) {
+  const display = document.getElementById('activeCountDisplay');
+  if (countActiveEnabled) {
+    display.textContent = `ATTIVI: ${count} / 50`;
+  } else {
+    display.textContent = `CONTEGGIO DISATTIVATO`;
   }
-
-  playSound('click');
-  if (!/^https?:\/\//i.test(url)) url = 'https://' + url;
-  window.open(url, '_blank', 'noopener,noreferrer');
 }
 
-// Eventi sui pulsanti
-document.querySelectorAll('.go').forEach(btn => {
-  btn.addEventListener('click', () => openUrl(btn.closest('.slot')));
-  btn.addEventListener('mouseenter', () => playSound('hover'));
+// Active Counter Toggle
+const activeCounterBtn = document.getElementById('activeCounterBtn');
+activeCounterBtn.addEventListener('click', () => {
+  playSound('click');
+  countActiveEnabled = !countActiveEnabled;
+  activeCounterBtn.classList.toggle('disabled', !countActiveEnabled);
+  
+  const activeSlots = document.querySelectorAll('.slot.is-active').length;
+  updateActiveCounterDisplay(activeSlots);
 });
 
-// Ricerca Istantanea tra tutti i 50 slot
-search.addEventListener('input', () => {
-  const q = search.value.toLowerCase().trim();
+// Search filter
+const searchInput = document.getElementById('search');
+searchInput.addEventListener('input', (e) => {
+  const query = e.target.value.toLowerCase().trim();
+  const slots = document.querySelectorAll('.slot');
 
-  document.querySelectorAll('.slot').forEach(card => {
-    const title = card.querySelector('.slot-title').value.toLowerCase();
-    const url = card.querySelector('.slot-url').value.toLowerCase();
-    const num = card.querySelector('.slot-number').innerText.toLowerCase();
+  slots.forEach(slot => {
+    const title = slot.querySelector('.slot-title').value.toLowerCase();
+    const url = slot.querySelector('.slot-url').value.toLowerCase();
+    const num = slot.querySelector('.slot-number').textContent;
 
-    if (title.includes(q) || url.includes(q) || num.includes(q)) {
-      card.style.display = 'flex';
+    if (title.includes(query) || url.includes(query) || num.includes(query)) {
+      slot.style.display = 'flex';
     } else {
-      card.style.display = 'none';
+      slot.style.display = 'none';
     }
   });
 });
 
-// Sfondo Animato Cyber Canvas
+// --- DYNAMIC MULTICOLOR CANVAS BACKGROUND ---
 const canvas = document.getElementById('bg-canvas');
 const ctx = canvas.getContext('2d');
+
+let width, height;
 let particles = [];
+let mouse = { x: null, y: null, radius: 170 };
+
+const neonColors = ['#00f0ff', '#ff007f', '#9d00ff', '#00ff66', '#ffea00'];
 
 function resizeCanvas() {
-  canvas.width = window.innerWidth;
-  canvas.height = window.innerHeight;
+  width = canvas.width = window.innerWidth;
+  height = canvas.height = window.innerHeight;
 }
+
 window.addEventListener('resize', resizeCanvas);
 resizeCanvas();
 
-for (let i = 0; i < 45; i++) {
-  particles.push({
-    x: Math.random() * canvas.width,
-    y: Math.random() * canvas.height,
-    vx: (Math.random() - 0.5) * 0.8,
-    vy: (Math.random() - 0.5) * 0.8,
-    size: Math.random() * 2 + 1
-  });
-}
+window.addEventListener('mousemove', (e) => {
+  mouse.x = e.x;
+  mouse.y = e.y;
+});
 
-function animateCanvas() {
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
-  ctx.fillStyle = '#00f0ff';
-  ctx.strokeStyle = 'rgba(0, 240, 255, 0.08)';
+window.addEventListener('mouseleave', () => {
+  mouse.x = null;
+  mouse.y = null;
+});
 
-  particles.forEach((p, index) => {
-    p.x += p.vx; p.y += p.vy;
-    if (p.x < 0 || p.x > canvas.width) p.vx *= -1;
-    if (p.y < 0 || p.y > canvas.height) p.vy *= -1;
+class Particle {
+  constructor() {
+    this.x = Math.random() * width;
+    this.y = Math.random() * height;
+    this.size = Math.random() * 2.5 + 1;
+    this.vx = (Math.random() - 0.5) * 0.8;
+    this.vy = (Math.random() - 0.5) * 0.8;
+    this.color = neonColors[Math.floor(Math.random() * neonColors.length)];
+    this.alpha = Math.random() * 0.6 + 0.3;
+  }
 
+  draw() {
     ctx.beginPath();
-    ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+    ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+    ctx.fillStyle = this.color;
+    ctx.globalAlpha = this.alpha;
+    ctx.shadowColor = this.color;
+    ctx.shadowBlur = 12;
     ctx.fill();
+    ctx.shadowBlur = 0;
+    ctx.globalAlpha = 1.0;
+  }
 
-    for (let j = index + 1; j < particles.length; j++) {
-      const p2 = particles[j];
-      const dist = Math.hypot(p.x - p2.x, p.y - p2.y);
-      if (dist < 120) {
-        ctx.beginPath();
-        ctx.moveTo(p.x, p.y);
-        ctx.lineTo(p2.x, p2.y);
-        ctx.stroke();
+  update() {
+    this.x += this.vx;
+    this.y += this.vy;
+
+    if (this.x < 0 || this.x > width) this.vx *= -1;
+    if (this.y < 0 || this.y > height) this.vy *= -1;
+
+    if (mouse.x && mouse.y) {
+      let dx = mouse.x - this.x;
+      let dy = mouse.y - this.y;
+      let distance = Math.sqrt(dx * dx + dy * dy);
+      if (distance < mouse.radius) {
+        const force = (mouse.radius - distance) / mouse.radius;
+        const directionX = dx / distance;
+        const directionY = dy / distance;
+        this.x -= directionX * force * 4;
+        this.y -= directionY * force * 4;
       }
     }
-  });
-
-  requestAnimationFrame(animateCanvas);
+  }
 }
-animateCanvas();
+
+function initParticles() {
+  particles = [];
+  const particleCount = Math.min(Math.floor((width * height) / 9000), 110);
+  for (let i = 0; i < particleCount; i++) {
+    particles.push(new Particle());
+  }
+}
+
+function animateParticles() {
+  ctx.clearRect(0, 0, width, height);
+
+  for (let i = 0; i < particles.length; i++) {
+    particles[i].update();
+    particles[i].draw();
+
+    for (let j = i + 1; j < particles.length; j++) {
+      const dx = particles[i].x - particles[j].x;
+      const dy = particles[i].y - particles[j].y;
+      const dist = Math.sqrt(dx * dx + dy * dy);
+
+      if (dist < 140) {
+        ctx.beginPath();
+        ctx.moveTo(particles[i].x, particles[i].y);
+        ctx.lineTo(particles[j].x, particles[j].y);
+        ctx.strokeStyle = particles[i].color;
+        ctx.globalAlpha = 0.25 * (1 - dist / 140);
+        ctx.lineWidth = 1;
+        ctx.stroke();
+        ctx.globalAlpha = 1.0;
+      }
+    }
+  }
+
+  requestAnimationFrame(animateParticles);
+}
+
+window.onload = function() {
+  initSlotsBehavior();
+  initParticles();
+  animateParticles();
+};
 </script>
 
 </body>
