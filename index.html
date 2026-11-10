@@ -96,16 +96,25 @@ header { padding: 45px 0 25px; text-align: center; position: relative; }
   box-shadow: 0 0 50px rgba(0, 240, 255, 0.8), 0 0 80px rgba(255, 0, 127, 0.7);
 }
 
-/* Pulsante Roblox Gaming RGB Fluid */
-.btn-roblox {
+/* Container Pulsanti Header */
+.header-buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin: 20px auto 25px;
+}
+
+/* Pulsante Roblox & Info Gaming RGB Fluid */
+.btn-roblox, .btn-info {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 14px;
-  margin: 20px auto 25px;
-  padding: 18px 40px;
+  padding: 18px 30px;
   font-family: 'Orbitron', sans-serif;
-  font-size: 16px;
+  font-size: 15px;
   font-weight: 900;
   letter-spacing: 2px;
   color: #ffffff;
@@ -129,12 +138,12 @@ header { padding: 45px 0 25px; text-align: center; position: relative; }
   100% { background-position: 0% 50%; }
 }
 
-.btn-roblox:hover {
+.btn-roblox:hover, .btn-info:hover {
   transform: translateY(-5px) scale(1.05);
   box-shadow: 0 0 60px rgba(0, 240, 255, 0.9), 0 0 90px rgba(255, 0, 127, 0.8);
 }
 
-.btn-roblox .hand-icon {
+.hand-icon {
   font-size: 22px;
   animation: pulseIcon 1.2s infinite alternate;
 }
@@ -413,7 +422,7 @@ footer {
   .grid { grid-template-columns: 1fr; } 
   h1 { font-size: 32px; }
   .control-panel { flex-direction: column; align-items: stretch; }
-  .btn-roblox { font-size: 14px; padding: 15px 24px; }
+  .btn-roblox, .btn-info { font-size: 13px; padding: 15px 20px; }
 }
 </style>
 </head>
@@ -427,9 +436,14 @@ footer {
   <h1 id="mainTitle">REMAWED10 HUB</h1>
   <p class="subtitle">TUTTI I SITI DI QUESTO HUB. <b>VAI A VISITARLI! ↗️</b> (premi VAI per aprire il sito.)</p>
 
-  <a href="roblox.html" class="btn-roblox">
-    <span class="hand-icon">🎮</span> VISITA I PROGRESSI DI ROBLOX
-  </a>
+  <div class="header-buttons">
+    <a href="roblox.html" class="btn-roblox">
+      <span class="hand-icon">🎮</span> VISITA I PROGRESSI DI ROBLOX
+    </a>
+    <a href="i.html" class="btn-info">
+      <span class="hand-icon">ℹ️</span> INFORMAZIONI
+    </a>
+  </div>
 </header>
 
 <main class="container">
@@ -474,7 +488,10 @@ footer {
       </div>
       <button class="go" type="button">VAI ↗️</button>
     </article>
-    <footer>⚡ REMAWED10 HUB • VIBRANT GAMING EDITION • I LINK SI APRONO IN UNA NUOVA SCHEDA ⚡</footer>
+  </section>
+</main>
+
+<footer>⚡ REMAWED10 HUB • VIBRANT GAMING EDITION • I LINK SI APRONO IN UNA NUOVA SCHEDA ⚡</footer>
 
 <script>
 // --- AUDIO SYNTHESIZER (Web Audio API) ---
@@ -602,8 +619,8 @@ window.addEventListener('resize', resizeCanvas);
 resizeCanvas();
 
 window.addEventListener('mousemove', (e) => {
-  mouse.x = e.x;
-  mouse.y = e.y;
+  mouse.x = e.clientX;
+  mouse.y = e.clientY;
 });
 
 window.addEventListener('mouseleave', () => {
