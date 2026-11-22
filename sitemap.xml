@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+
+  <url>
+       <loc>https://remastfe10.github.io/REMAWED10-HUB/</loc>
+       <lastmod>2026-11-03T21:15:00+00:00</lastmod>
+       <priority>1.0000</priority>
+  </url>
+  <url>
+       <loc>https://remastfe10.github.io/REMAWED10-HUB/roblox.html</loc>
+       <lastmod>2026-11-03T21:15:00+00:00</lastmod>
+       <priority>0.8000</priority>
+  </url>
+  <url>
+       <loc>https://remastfe10.github.io/REMAWED10-HUB/exploits.html</loc>
+       <lastmod>2026-11-03T21:15:00+00:00</lastmod>
+       <priority>0.6400</priority>
+  </url>
+  <url>
+       <loc>https://remastfe10.github.io/REMAWED10-HUB/gui.html</loc>
+       <lastmod>2026-11-03T21:15:00+00:00</lastmod>
+       <priority>0.5120</priority>
+  </url>
+  <url>
+       <loc>https://remastfe10.github.io/REMAWED10-HUB/gui2.html</loc>
+       <lastmod>2026-11-03T21:15:00+00:00</lastmod>
+       <priority>0.5120</priority>
+  </url>
+</urlset>
